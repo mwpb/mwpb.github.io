@@ -1,0 +1,191 @@
+\documentclass[]{beamer}
+\usepackage{mdframed}
+\usepackage{csquotes}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{makeidx}
+\makeindex
+\usepackage{bbm}
+\usepackage[]{tensor} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\setbeamertemplate{theorems}[ams style] 
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{defprop}[theorem]{Definition/Proposition}
+\usepackage[all]{xy}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows}
+\title{Infinitesimals in Lie Theory}
+\author{Matthew Burke}
+\date{University of Calgary, October 7, 2016}
+\begin{document}
+\begin{frame}[noframenumbering,plain]
+\titlepage
+\end{frame}
+
+\begin{frame}[c]\frametitle{Summary}
+  \begin{enumerate}
+    \setlength{\itemsep}{25pt}
+    \item Introduction and Lie Groups
+    \item Lie Algebras and Lie's Theorems
+    \item Multi-object Lie Theory
+    \item Infinitesimals and Synthetic Lie Theory
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Introduction to Lie Groups}
+Sophus Lie's original motivation to introduce Lie groups was to study the symmetries of solutions to differential equations.
+\begin{example}
+    If $g:\mathbb{R}\rightarrow \mathbb{R}$ is an integrable function then
+    \begin{equation*}
+        \frac{dy}{dx}=g(x)\implies y = \int g(x)dx +c
+    \end{equation*}
+\end{example}
+\begin{example}
+    \begin{equation*}
+        \frac{dy}{dx}=y\implies y=ce^x
+    \end{equation*}
+\end{example}
+\end{frame}
+
+\begin{frame}\frametitle{Smooth Manifolds}
+        \textbf{Slogan:} A smooth manifold is a topological space that locally `looks like' Euclidean space and globally `fits together smoothly'.
+    \begin{example}
+        \begin{itemize}
+            \item All open subsets $U$ of $\mathbb{R}^n$.
+            \item All graphs of smooth functions $f:\mathbb{R}^n\rightarrow \mathbb{R}^m$.
+            \item The sphere $S^2$.
+            \item Any smooth retract of an open subset (Whitney Embedding).
+        \end{itemize}
+    \end{example}
+\begin{definition}
+    A \emph{Lie group} is a smooth manifold together with maps $\mu:G\times G\rightarrow G$ and $e:1\rightarrow G$ that satisfy the usual associativity and unit laws.
+\end{definition}
+    In this talk we consider Lie groups that are contained in $Mat(n,\mathbb{R})$.
+    \begin{example}
+        The groups $GL(n,\mathbb{R})$, $SL(n,\mathbb{R})$, $O(n,\mathbb{R})$ and $SO(n,\mathbb{R})$.
+    \end{example}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Lie Algebras}
+    `Through the introduction and fundamental use of the infinitesimal transformations the theory of infinite continuous groups now takes on a surprising simplicity.' \textbf{Sophus Lie}
+    \begin{itemize}
+        \item Lie used the infinitesimal transformations as `generators' for his Lie groups;
+        \item contrast between infinitesimal and infinite - in this case continuous;
+    \end{itemize}
+    `as expedient the synthetic method is for discovery, as difficult it is to give a clear exposition on synthetic investigations' \textbf{Sophus Lie}
+    \begin{itemize}
+        \item Grothendieck schemes and nilpotents;
+        \item synthetic differential geometry of Lawvere and Kock which usually uses a Grothendieck topos;
+        \item critically rejects the principle of the excluded middle;
+        \item so we use constructive mathematics and intuitionistic logic;
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{The Nilradical and Jacobson Radical}
+    Tangent vectors...
+In intuitionistic logic the following statements are not equivalent.
+\begin{equation*}
+    \begin{tikzcd}
+        U(x)\vee \neg (x=0) \rar \dar & \neg(x=0)\implies U(x)\dar \\
+        \neg U(x) \implies (x=0) \rar & \neg\neg(U(x)\vee (x=0))
+    \end{tikzcd}
+\end{equation*}
+hence we have four different kinds of field.
+\begin{definition}
+    The \emph{Jacobson radical $J(R)=\{x\in R: \forall u\in R.~ 1-ux\text{ is inv.}\}$}.
+    The \emph{nilradical N(R)} is the set of all the nilpotent elements of $R$.
+    $N(R)\subset J(R)$ because $(1-ud)(1+ud+(ud)^2+...+(ud)^{k-1})$.
+\end{definition}
+In a `field of fractions':
+\begin{align*}
+    1-ux\text{ is inv.}&\iff \neg(1-ux=0)\\
+    &\iff \neg(1=ux)\\
+    &\iff \neg(x\text{ is inv.})\\
+    &\iff \neg\neg(x=0)
+\end{align*}
+\end{frame}
+
+
+\begin{frame}[fragile]\frametitle{Lie Algebras}
+    \begin{definition}
+        A \emph{Lie algebra} is a real vector space $V$ and a binary operation $[-,-]:A\times A \rightarrow A$ such that
+        \begin{itemize}
+            \item $[X,kY]=k[X,Y]$ and $[X,Y+Z]=[X,Y]+[X,Z]$;
+            \item $[X,Y]=-[Y,X]$;
+            \item $[X,[Y,Z]]+[Z,[X,Y]]+[Y,[Z,X]]=0$;
+        \end{itemize}
+    \end{definition}
+    \begin{example}
+        The vector space $Mat(n,\mathbb{R})$ with bracket $[X,Y]=XY-YX$.
+    \end{example}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Lie's Fundamental Theorems}
+If $G$ is a Lie group then we can form a Lie algebra $T_e G$ that has as underlying vector space the tangent space at the identity.
+\begin{equation*}
+    \begin{tikzcd}
+        LieAlg \rar[bend left] & LieGp \lar[bend left]{T_e}
+    \end{tikzcd}
+\end{equation*}
+In the case of a matrix Lie group the bracket is given by the commutator $[X,Y]=XY-YX$.
+\begin{example}
+    The Lie algebra of $GL(n,\mathbb{R})$ is $Mat(n,\mathbb{R})$.
+    The Lie algebra of $SL(n,\mathbb{R})$ is the Lie algebra of traceless matrices.
+\end{example}
+\begin{theorem}
+    \begin{itemize}
+        \item (Lie II) if $G$ and $H$ are simply connected Lie groups and if $\phi:T_e G \rightarrow T_e H$ then there is a unique extension $\psi:G\rightarrow H$.
+        \item (Lie III) if $\mathfrak{g}$ is a Lie algebra then there is a unique simply connected Lie group $G$ such that $T_e G = \mathfrak{g}$.
+    \end{itemize}
+\end{theorem}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Lie Algebroids}
+\begin{definition}
+A \emph{Lie algebroid} is a vector bundle $A\rightarrow M$ in $Man$ together with a bundle homomorphism $\rho:A\rightarrow TM$ such that the space of sections $\Gamma(A)$ is a Lie algebra satisfying $(\forall X,Y\in \Gamma(A))(\forall f\in C^{\infty}(M))$:
+$$[X,fY]=\rho(X)(f)\cdot Y+f[X,Y]$$
+\end{definition}
+\begin{example}
+    All Lie algebras and all tangent bundles.
+\end{example}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{definition}
+A \emph{Lie groupoid} is a groupoid in $Man$ such that the source and target maps are submersions. 
+\end{definition}
+
+In the multi-object setting, we still have a full and faithful functor
+$$LieGpd_{sc}\xrightarrow{T_{e}} LieAlgd$$
+but it is not essentially surjective.
+\begin{itemize}
+	\item For every Lie algebroid there is a topological groupoid that is the `obvious' candidate for the integral of the algebroid (its Weinstein groupoid)  but there can be obstructions to putting a smooth structure on it - see [Crainic and Fernandes 2003].
+\end{itemize}
+\textbf{Idea: }Enlarge the category of smooth spaces:-
+\begin{itemize}
+	\item Differentiable Stacks [Tseng and Zhu 2006].
+	\item Using Synthetic Differential Geometry.
+\end{itemize}
+\end{frame}
+\begin{frame}\frametitle{The Jet Part of a Lie Group}
+  \begin{example}
+    Let $D_{\infty}=\bigcup_{k=1}^{\infty}D_{k}$ then $(R,+)_{\infty}=(D^n _{\infty},+)$.
+  \end{example}
+  \begin{example}
+    Since all Lie groups $\mathbb{G}$ are locally Euclidean we have that $\mathbb{G}_{\infty}=(D^n _{\infty},\mu)$ for some $n\in\mathbb{N}$ and some multiplication $\mu$.
+  \end{example}
+  \begin{itemize}
+    \item Now using the Kock-Lawvere axiom arrows
+    $$D_{\infty}^{2n} \xrightarrow{\mu} D_{\infty}^n$$
+    are $n$-tuples of formal power series in indeterminates $X_1,...,X_n,Y_1,...,Y_n$ with values in nilpotent elements.
+    \item But having values in nilpotent elements is equivalent to having zero constant term.
+    Furthermore the unit and associativity laws for $\mu$ induce the structure of a formal group law on the $n$-tuple.
+  \end{itemize}
+\end{frame}
+
+\end{document}
