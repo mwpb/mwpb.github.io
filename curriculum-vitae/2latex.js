@@ -64,11 +64,12 @@ var educationSection = `
 \\begin{itemize}`;
 
 for(var i=0;i<education.length;i++){
+    if (education[i].notes.length == 3) { thirdNote = education[i].notes[2] } else {thirdNote = ""}
     educationSection = educationSection + `
     \\item {\\bf ${education[i].institution}}\\\\
     ${education[i].title}, ${education[i].years}.\\\\
     ${education[i].notes[0]}.\\\\
-    ${education[i].notes[1]}.`;
+    ${education[i].notes[1]}.`+'\\\\'+thirdNote;
 }
 
 educationSection = educationSection + '\n\\end{itemize}\n'
