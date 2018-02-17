@@ -1,0 +1,9 @@
+(load-file "f.el")
+(load-file "generate-html.el")
+(load-file "generate-site.el")
+
+(setq bootstrap-css (f-read "../_includes/bootstrap/css/bootstrap.min.css" 'utf-8))
+(setq bootstrap-js (f-read "../_includes/bootstrap/js/bootstrap.min.js" 'utf-8))
+(setq jquery (f-read "../_includes/jquery.min.js" 'utf-8))
+
+(f-write (page-from-body (talks-dl)) 'utf-8 "../gen_html/talks.html")

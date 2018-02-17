@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<h1>Matthew Burke</h1>
+<p>
+  I am a Postdoctoral Scholar at the
+  <a href="https://math.ucalgary.ca">Department of Mathematics and Statistics</a> at the University of Calgary
+  and a member of the <a href="http://www.ucalgary.ca/logic/cprglct">Calgary Peripatetic Research group</a> in logic and category theory.
+</p>
+
+<p>
+    <dl class="dl-horizontal contact-dl">
+        <dt><strong>Email:</strong></dt>
+        <dd>matthewpatrickburke<span style="display:none">$%tefsdjj67</span>@gmail.com</dd>
+        <dt><strong>Photos:</strong></dt>
+        <dd>
+            <a href="static/photo.jpg">jpg1</a>,
+            <a href="static/MatthewBurkeCrop.jpg">jpg2</a>
+        </dd>
+        <dt><strong>Github:</strong></dt>
+        <dd><a href="https://github.com/mwpb">https://github.com/mwpb</a></dd>
+        <dt><strong>Curriculum Vitae:</strong></dt>
+        <dd>
+            <!-- <a href="static/pdfs/matthew-burke-cv.pdf">general</a>, -->
+            <a href="curriculum-vitae/matthew-burke-cv.pdf">academic</a>
+        </dd>
+    </dl>
+</p>
