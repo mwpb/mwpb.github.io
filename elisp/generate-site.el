@@ -1,4 +1,5 @@
 (load-file "f.el")
+(load-file "layout.el")
 (load-file "generate-html.el")
 (load-file "generate-site.el")
 
