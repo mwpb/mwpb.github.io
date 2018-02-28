@@ -118,13 +118,13 @@
     ],
     "talks": [
 	{
-	    "year":"2018-02-26",
+	    "year":"2018.02.26",
 	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
 	    "title":"Localisation of Simplicial Presheaf Categories",
 	    "institution":"University of Calgary"
 	},
 	{
-	    "year":"2018-01-22",
+	    "year":"2018.01.22",
 	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
 	    "title":"The Calculus of Functors using Sheafification",
 	    "institution":"University of Calgary"
