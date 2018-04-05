@@ -118,6 +118,12 @@
     ],
     "talks": [
 	{
+	    "year":"2018.03.26",
+	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
+	    "title":"Free co-completion, presheaves and sheaves",
+	    "institution":"University of Calgary"
+	},
+	{
 	    "year":"2018.02.26",
 	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
 	    "title":"Localisation of Simplicial Presheaf Categories",
