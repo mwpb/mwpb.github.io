@@ -118,6 +118,18 @@
     ],
     "talks": [
 	{
+	    "year":"2018.05.14",
+	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
+	    "title":"A Two Dimensional Setting for the Calculus of Infinity Functors: Part II",
+	    "institution":"University of Calgary"
+	},
+	{
+	    "year":"2018.04.30",
+	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
+	    "title":"A Two Dimensional Setting for the Calculus of Infinity Functors",
+	    "institution":"University of Calgary"
+	},
+	{
 	    "year":"2018.03.26",
 	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
 	    "title":"Free co-completion, presheaves and sheaves",
