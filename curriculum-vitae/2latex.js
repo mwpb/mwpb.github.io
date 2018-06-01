@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var string = fs.readFileSync('curriculum-vitae.json');
+var string = fs.readFileSync('../data.json');
 var obj = JSON.parse(string);
 
 
@@ -64,7 +64,7 @@ var educationSection = `
 \\begin{itemize}`;
 
 for(var i=0;i<education.length;i++){
-    if (education[i].notes.length == 3) { thirdNote = education[i].notes[2] } else {thirdNote = ""}
+    if (education[i].notes.length == 3) { thirdNote = education[i].notes[2]+'.' } else {thirdNote = ""}
     educationSection = educationSection + `
     \\item {\\bf ${education[i].institution}}\\\\
     ${education[i].title}, ${education[i].years}.\\\\
@@ -94,6 +94,20 @@ for(var i=0;i<teaching.length;i++){
 
 teachingSection = teachingSection + '\n\\end{tabu}\n'
 
+//Service Section
+var service = obj.service;
+var serviceSection =`
+\\section*{Academic Service}
+\\begin{tabu}{X[1]X[5]}`
+
+for(var i=0;i<service.length;i++){
+    serviceSection = serviceSection + `
+    ${service[i].year} & \\bf{${service[i].role}}\\\\
+{}& ${service[i].description}.\\\\
+`;
+}
+serviceSection = serviceSection + '\n\\end{tabu}\n'
+
 // Publications Section
 var publications = obj.publications;
 var publicationsSection = `
@@ -104,7 +118,8 @@ for(var i=0;i<publications.length;i++){
     \\item ${publications[i].title}, \\emph{${publications[i].journal}}, ${publications[i].year}. Available at \\url{${publications[i].url}}.`;
 }
 var publicationsSectionInner = publicationsSection + '\n\\end{itemize}\n';
-publicationsSection = '\\section*{Publications and Preprints}' + publicationsSection + '\n\\end{itemize}\n';
+publicationsSection = '\\section*{Publications}' + publicationsSection + '\n\\end{itemize}\n';
+
 
 // Talks Section
 var talks = obj.talks;
@@ -126,6 +141,7 @@ var cv = preamble +
     educationSection +
     publicationsSection +    
     teachingSection +
+    serviceSection +
     talksSection +
     '\n\\end{document}';
 
