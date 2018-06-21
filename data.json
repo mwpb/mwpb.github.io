@@ -50,7 +50,7 @@
     ],
     "teachingExperience": [
 		{
-			"years":"2017.09-Present",
+			"years":"2017.09-2017.12",
 			"title": "Sessional Instructor at the University of Calgary",
 			"notes": ["Lectured Mathematics 249 in the Department of Mathematics and Statistics."]
 		},
@@ -94,18 +94,37 @@
 	    "notes": []
 	}
     ],
-    "publications": [
-		{
+    "preprints":[
+			{
 			"year":"2017.11.28",
 			"title":"The Algebroid of a Groupoid in a Tangent Category",
 			"journal":"preprint",
 		    "arxiv":"https://arxiv.org/abs/1711.09328"
-		},
+		}
+    ],
+    "service":[
+	{
+	    "year":"2018.01-Present",
+	    "role":"Seminar Organiser",
+	    "description":"Peripatetic Seminar in Category Theory and Logic at the University of Calgary"
+	},
+	{
+	    "year":"2018.05",
+	    "role":"Session Chair",
+	    "description":"Category Theory and Logic, Alberta Mathematics Dialogue 2018"
+	},
+	{
+	    "year":"2017.12",
+	    "role":"Article Referee",
+	    "description":"Advances in Mathematics"
+	}
+    ],
+    "publications": [
 		{
 		"year":"2018.02.06",
 		"title":"A Synthetic Version of Lie's Second Theorem",
 		    "journal":"Applied Categorical Structures",
-		    "url":"http://rdcu.be/HWZW",
+		    "url":"https://doi.org/10.1007/s10485-018-9518-2",
 		"arxiv":"https://arxiv.org/abs/1605.06378"
 	},
 	{

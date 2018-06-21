@@ -104,7 +104,9 @@ dd {
     margin: auto;
     max-width: 75ch;
 }</style>
-<title>Matthew Burke</title>
+<title>Matthew Burke University of Calgary Mathematics</title>
+<meta name='description' content='Personal webpage of Matthew Burke, a postdoctoral scholar at the Department of Mathematics and Statistics at the University of Calgary and a member of the Calgary Peripatetic Research group in logic and category theory.'>
+<meta name='keywords' content='mathematics matthew burke university calgary macquarie cambridge'>
 </head>
 <body>
 <div class='navbar navbar-default navbar-fixed-top'>
