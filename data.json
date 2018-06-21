@@ -125,7 +125,8 @@
 		"title":"A Synthetic Version of Lie's Second Theorem",
 		    "journal":"Applied Categorical Structures",
 		    "url":"https://doi.org/10.1007/s10485-018-9518-2",
-		"arxiv":"https://arxiv.org/abs/1605.06378"
+		    "arxiv":"./static/pdfs/burke-synthetic-version-lie-ii.pdf"
+		    // "arxiv":"https://arxiv.org/abs/1605.06378"
 	},
 	{
 	    "year": "2016.06.29",
