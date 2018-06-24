@@ -108,6 +108,20 @@ for(var i=0;i<service.length;i++){
 }
 serviceSection = serviceSection + '\n\\end{tabu}\n'
 
+//Service Section
+var profDev = obj.profDev;
+var profDevSection =`
+\\section*{Professional Development}
+\\begin{tabu}{X[1]X[5]}`
+
+for(var i=0;i<service.length;i++){
+    profDevSection = profDevSection + `
+    ${profDev[i].year} & \\bf{${profDev[i].institution}}\\\\
+    &{}${profDev[i].title}\\\\ 
+`;
+}
+profDevSection = profDevSection + '\n\\end{tabu}\n'
+
 // Publications Section
 var publications = obj.publications;
 var publicationsSection = `
@@ -142,6 +156,7 @@ var cv = preamble +
     publicationsSection +    
     teachingSection +
     serviceSection +
+    profDevSection +
     talksSection +
     '\n\\end{document}';
 

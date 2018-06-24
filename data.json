@@ -4,6 +4,23 @@
     "email": "matthew.burke1@ucalgary.ca",
     "telephone": "+14036049368",
     "website": "https://mwpb.uk",
+    "profDev":[
+    	{
+    		"year":"2018",
+    		"institution":"Mitacs Online Workshops",
+    		"title":"Managing Project Timelines and Time Managment"
+    	},
+    	{
+    		"year":"2016",
+    		"institution":"University of Michigan on Coursera",
+    		"title":"Using Python to Access Web Data"
+    	},
+    	{
+    		"year":"2016",
+    		"institution":"University of Michigan on Coursera",
+    		"title":"Using Databases with Python"
+    	}
+    ],
     "education": [
 	{
 	    "years": "2011-2015",
