@@ -155,6 +155,18 @@
     ],
     "talks": [
 	{
+	    "year":"2018.07.03",
+	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
+	    "title":"More Elements of the Theory of Quasi-categories",
+	    "institution":"University of Calgary"	    
+	},
+	{
+	    "year":"2018.06.27",
+	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
+	    "title":"Elements of the Theory of Quasi-categories",
+	    "institution":"University of Calgary"
+	},
+	{
 	    "year":"2018.05.14",
 	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
 	    "title":"A Two Dimensional Setting for the Calculus of Infinity Functors: Part II",
