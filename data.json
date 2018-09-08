@@ -8,7 +8,7 @@
     	{
     		"year":"2018",
     		"institution":"Mitacs Online Workshops",
-    		"title":"Managing Project Timelines and Time Managment"
+    		"title":"Managing Project Timelines"
     	},
     	{
     		"year":"2016",
@@ -155,6 +155,12 @@
     ],
     "talks": [
 	{
+	    "year":"2018.08.29",
+	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
+	    "title":"Linearisation of infinity categories",
+	    "institution":"University of Calgary"
+	},
+	{
 	    "year":"2018.07.03",
 	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
 	    "title":"More Elements of the Theory of Quasi-categories",
@@ -165,6 +171,18 @@
 	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
 	    "title":"Elements of the Theory of Quasi-categories",
 	    "institution":"University of Calgary"
+	},
+	{
+	    "year":"2018.06.04",
+	    "venue":"Canadian Mathematical Society, Summer Meeting",
+	    "title":"The Calculus of Infinity Functors and Tangent Categories",
+	    "institution":"University of New Brunswick"
+	},
+	{
+	    "year":"2018.06.02",
+	    "venue":"26th Foundational Methods in Computer Science Workshop",
+	    "title":"Tangent Bundles of Groupoids, Pre-groupoids and Torsoids",
+	    "institution":"Mount Allison University"
 	},
 	{
 	    "year":"2018.05.14",
