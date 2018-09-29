@@ -158,13 +158,15 @@
 	    "year":"2018.10.01",
 	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
 	    "title":"Introduction to univalence in Coq II",
-	    "institution":"University of Calgary"
+	    "institution":"University of Calgary",
+	    "website":"https://github.com/mwpb/introduction-univalence-coq"
 	},
 	{
 	    "year":"2018.09.24",
 	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
 	    "title":"Introduction to univalence in Coq",
-	    "institution":"University of Calgary"
+	    "institution":"University of Calgary",
+	    "website":"https://github.com/mwpb/introduction-univalence-coq"
 	},
 	{
 	    "year":"2018.08.29",
