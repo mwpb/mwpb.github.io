@@ -155,6 +155,18 @@
     ],
     "talks": [
 	{
+	    "year":"2018.10.01",
+	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
+	    "title":"Introduction to univalence in Coq II",
+	    "institution":"University of Calgary"
+	},
+	{
+	    "year":"2018.09.24",
+	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
+	    "title":"Introduction to univalence in Coq",
+	    "institution":"University of Calgary"
+	},
+	{
 	    "year":"2018.08.29",
 	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
 	    "title":"Linearisation of infinity categories",
