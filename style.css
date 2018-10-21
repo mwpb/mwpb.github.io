@@ -98,6 +98,7 @@ body {
 .nav {
 	border-bottom: 1px lightgrey solid;
 	position:sticky;
+	position: -webkit-sticky;
 	top:0;
 	background-color: white;
 	z-index: 3;
