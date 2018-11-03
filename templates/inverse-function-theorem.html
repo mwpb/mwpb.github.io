@@ -1,46 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Circle Zoom</title>
-	<meta charset="utf-8"/>
-	<script type="text/javascript" src="jsxgraphcore.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
-	<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
-</head>
-<body style="max-width: 800px;margin:auto;text-align:justify;">
-	<style type="text/css">
-		div.jsxbox {
-			/*border: 1px solid black;*/
-			width: 100%;
-			max-width: 500px;
-			margin: auto;
-		}
-		div.jsxbox:before{
-			content: "";
-			float: left;
-			padding-bottom: 100%;
-		}
-		div.jsxbox:after{
-			content: "";
-			display: table;
-			clear: both;
-		}
-		.flexContainer {
-			max-width: 800px;
-			margin: 0 auto;
-			display: flex;
-			justify-content: center;
-		}
-		.column {
-			height: 300px;
-			width: 300px;
-			/*border: 1px solid black;*/
-		}
-	</style>
+{% extends "template.html" %}
+{% block body %}
+<script type="text/javascript" src="jsxgraphcore.js"></script>
+<script src='miniMathJax/MathJax.js?config=TeX-AMS_SVG'></script>
+<script>MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]},imageFont: null, messageStyle:"none"});</script>
+<style type="text/css">
+	div.jsxbox {
+		/*border: 1px solid black;*/
+		width: 100%;
+		max-width: 500px;
+		margin: auto;
+	}
+	div.jsxbox:before{
+		content: "";
+		float: left;
+		padding-bottom: 100%;
+	}
+	div.jsxbox:after{
+		content: "";
+		display: table;
+		clear: both;
+	}
+	.flexContainer {
+		max-width: 800px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: center;
+	}
+	.column {
+		height: 300px;
+		width: 300px;
+		/*border: 1px solid black;*/
+	}
+</style>
 
 <h1>The Inverse Function Theorem</h1>
 
@@ -308,7 +299,3 @@ createBox2();
 </script>
 The inverse function theorem tells us that if $f$ is a differentiable function and $x$ is a point in the domain of $f$ such that the derivative of $f$ at $x$ is invertible then we can always find an open set around $x$ on which $f$ is injective.
 </p>
-
-
-</body>
-</html>
