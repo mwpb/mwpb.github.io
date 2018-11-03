@@ -22,6 +22,7 @@ content_files = [
 	"complexEigenvalues",
 	"distinctEigenvalues",
 	"introEigenvectors",
+	"inverse-function-theorem",
 	"software",
 	"sorites",
 	"writing",
