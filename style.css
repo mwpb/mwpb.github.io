@@ -101,7 +101,7 @@ body {
 	position: -webkit-sticky;
 	top:0;
 	background-color: white;
-	z-index: 3;
+	z-index: 99;
 }
 @media(min-width:750px){
 	/* Apply when viewport is larger than 750px. */
