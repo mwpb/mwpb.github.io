@@ -1,0 +1,225 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{fontspec}
+
+\usepackage{polyglossia}
+
+%A Few Useful Packages
+\usepackage{marvosym}
+\usepackage[bottom=0.5in]{geometry}
+\usepackage{fontspec} 					%for loading fonts
+\usepackage{xunicode,xltxtra,url,parskip} 	%other packages for formatting
+\RequirePackage{color,graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[big]{layaureo} 				%better formatting of the A4 page
+% an alternative to Layaureo can be ** \usepackage{fullpage} **
+\usepackage{supertabular} 				%for Grades
+\usepackage{titlesec}				%custom \section
+%\usepackage{microtype}
+\usepackage{tabu}
+%Setup hyperref package, and colours for links
+\usepackage{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
+
+%FONTS
+\defaultfontfeatures{Mapping=tex-text}
+%\setmainfont[SmallCapsFont = Fontin SmallCaps]{Fontin}
+%%% modified for Karol Kozioł for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+%%%
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{3pt}{3pt}
+%Tweak a bit the top margin
+%\addtolength{\voffset}{-1.3cm}
+
+%Italian hyphenation for the word: ''corporations''
+\hyphenation{im-pre-se}
+
+%-------------WATERMARK TEST [**not part of a CV**]---------------
+\usepackage[absolute]{textpos}
+
+\setlength{\TPHorizModule}{30mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{2mm}{0.65\paperheight}
+\setlength{\parindent}{0pt}
+
+%--------------------BEGIN DOCUMENT----------------------
+\begin{document}
+
+%WATERMARK TEST [**not part of a CV**]---------------
+%\font\wm=''Baskerville:color=787878'' at 8pt
+%\font\wmweb=''Baskerville:color=FF1493'' at 8pt
+%{\wm 
+%	\begin{textblock}{1}(0,0)
+%		\rotatebox{-90}{\parbox{500mm}{
+%			Typeset by Alessandro Plasmati with \XeTeX\  \today\ for 
+%			{\wmweb \href{http://www.aleplasmati.comuv.com}{aleplasmati.comuv.com}}
+%		}
+%	}
+%	\end{textblock}
+%}
+\pagestyle{empty} % non-numbered pages
+
+\font\fb=''[cmr10]'' %for use with \LaTeX command
+
+%--------------------TITLE-------------
+\par{\centering
+  {\Huge {\sc Matthew Burke}
+  }\bigskip\par}
+
+%--------------------SECTIONS-----------------------------------
+%Section: Personal Data
+\begin{tabu}{X[1 r]|X[1 c]|X[1 l]}
+  +14036049368  & matthew.burke@cantab.net & \url{https://mwpb.uk}
+\end{tabu}
+
+%Section: Education
+\section{Education}
+
+\begin{tabular}{rl}	
+  & \textbf{Macquarie University, Sydney}\\
+                     & \textit{Doctor of Philosophy in Mathematics 2011-2015}\\
+                     &\\
+  & \textbf{Christ's College, University of Cambridge}\\
+                     & \textit{Part III Mathematics (MMATH) 2010-2011}\\
+                     & \textit{Bachelor's Degree in Mathematics (BA) 2007-2010}\\
+                     &\\
+\end{tabular}
+
+%Section: Work Experience at the top
+\section{Work Experience}
+
+\begin{tabu}{X[1, l]X[1 r]}
+{\bf University of Calgary}&\textsc{Sep 2018 - Present}\\
+\emph{Sessional instructor}&\textsc{\& Sep 2017 - Dec 2017}
+\end{tabu}
+\begin{itemize}
+  \item Lectured 4 classes of around 230 students for the MATH211 and MATH249 courses.
+  \item Used Jupyter notebooks for interactive visualisations and showing intermediate steps.
+\end{itemize}
+
+\begin{tabu}{X[1, l]X[1 r]}
+{\bf University of Calgary}&\textsc{Sep 2017 - Present}\\
+\emph{Postdoctoral scholar}  
+\end{tabu}
+\begin{itemize}
+  \item Initiated a cross-discipline collaboration between the departments of mathematics and computer science with my supervisors.
+  Published in a respected peer-reviewed journal.
+  \item Provided mentoring support for two PhD students.
+  \item Examiner for a PhD student's candidacy examination.
+  \item Reviewed papers for two mathematics journals. Organised the University of Calgary Peripatetic Seminar and chaired a session of the Alberta Mathematics Dialogue 2018.
+\end{itemize}
+
+\begin{tabu}{X[1, l]X[1 r]}
+{\bf MathSpire Ltd.}&\textsc{Nov 2016 - Aug 2017}\\
+\emph{Chief technology officer}  
+\end{tabu}
+\begin{itemize}
+  \item Developed a functional reactive cross-platform mobile and desktop application to teach A-level mathematics using interactive graphs, videos and integrated testing.
+  \item Created a web front-end and API for teachers to track student progress.
+  \item Showcased application at the BETT eduction technology conference.
+\end{itemize}
+
+\begin{tabu}{X[1, l]X[1 r]}
+{\bf Debate Chamber Ltd.}&\textsc{Jul 2016 - Aug 2016}\\
+\emph{Summer school tutor}  
+\end{tabu}
+\begin{itemize}
+  \item Guided classes of around 14 A-level students through university level material using a combination of presentations, exercises and group work.
+\end{itemize}
+
+\begin{tabu}{X[1, l]X[1 r]}
+{\bf MathSpire Ltd.}&\textsc{Jun 2016 - Nov 2016}\\
+\emph{Software developer and content creator}  
+\end{tabu}
+\begin{itemize}
+  \item Created a database of mathematics videos, tests and interactive graphics.
+\end{itemize}
+
+\begin{tabu}{X[1, l]X[1 r]}
+{\bf Masaryk University, Brno}&\textsc{Oct 2015 - Nov 2015}\\
+\emph{Visiting postdoctoral researcher}  
+\end{tabu}
+\begin{itemize}
+	\item Plenary speaker at the multi-disciplinary Eduard Cech Institute Workshop.
+	\item Collaborated with researchers in algebra, geometry and theoretical physics.
+\end{itemize}
+
+\begin{tabu}{X[1, l]X[1 r]}
+{\bf Macquarie University, Sydney}&\textsc{Jan 2013 - Jun 2014}\\
+\emph{Tutor}
+\end{tabu}
+\begin{itemize}
+  	\item Demonstrated solutions on the whiteboard for three undergraduate mathematics courses.
+\end{itemize}  
+
+\begin{tabu}{X[1, l]X[1 r]}
+{\bf Macquarie University Numeracy Centre}&\textsc{Jan 2012 - Dec 2013}\\
+\emph{Tutor}
+\end{tabu}
+\begin{itemize}
+  	\item Guided and motivated first year students at the drop-in centre.
+\end{itemize}
+
+\begin{tabu}{X[1, l]X[1 r]}
+{\bf Blue Tutors}&\textsc{Jun 2010}\\
+\emph{GCSE Tutor}
+\end{tabu}
+
+\section{Selected Projects}
+
+\begin{itemize}
+  \item \textbf{Kaggle Box Office Predictions:} (\url{https://github.com/mwpb/kaggle-projects})\\
+  Competition to predict the revenue of films. 
+  Uses IPython in Google Colab.
+  \item \textbf{Cryptopals Challenges:} (\url{https://github.com/mwpb/matasano-go})\\
+  Solutions written in Go. Work in progress: currently first three sets completed.
+  \item \textbf{ChessLogBook} (\url{https://mwpb.uk/ChessLogBook})\\
+  MacOS app written using Qt to play games on \url{freechess.org} and annotate them offline.
+  \item \textbf{Colimits in Coq:} (\url{https://github.com/mwpb/postulated-colimits-in-coq})\\
+  Computer verification of a key result in category theory using the Coq proof assistant.
+  % \item \textbf{JavaScript Libraries:} 
+\end{itemize}
+
+\section{Professional Development and Prizes}
+\begin{tabular}{rl}
+  2018 & Mitacs online workshop: Managing Project Timelines\\
+  2016 & University of Michigan on Coursera: Using Python to Access Web Data\\
+  2016 & University of Michigan on Coursera: Using Databases with Python\\
+  2008 & Christ's College Whelan Prize for First Class Examination Performance
+\end{tabular}
+
+\section{Skills}
+\begin{description}
+  \item[Over 1 year experience:]F\#, .NET, WebSharper \& Xamarin Frameworks, Git, LaTeX.
+  \item[Some experience:] C\#, JavaScript, HTML, CSS, Python, Jupyter Notebook, Coq.
+\end{description}
+
+\section{Publications}
+
+\begin{itemize}
+  \item Involution algebroids: a generalisation of Lie algebroids for tangent categories, \emph{In preparation}. Available at \url{https://mwpb.uk/static/pdfs/involution-algebroids.pdf}.
+    \item A Synthetic Version of Lie's Second Theorem, \emph{Applied Categorical Structures}, 2018.02.06. Available at \url{https://doi.org/10.1007/s10485-018-9518-2}.
+    \item Connected Lie Groupoids are Internally Connected and Integral Complete in Synthetic Differential Geometry, \emph{Symmetry, Integrability and Geometry: Methods and Applications}, 2016.06.29. Available at \url{http://www.emis.de/journals/SIGMA/2017/007/}.
+\end{itemize}
+
+\section{Selected Conference Presentations}
+
+\begin{itemize}
+	\item Canadian Mathematical Society, Summer Meeting, \emph{The Calculus of Infinity Functors and Tangent Categories}, University of New Brunswick, 2018.06.04.
+    \item 26th Foundational Methods in Computer Science Workshop, \emph{Tangent Bundles of Groupoids, Pre-groupoids and Torsoids}, Mount Allison University, 2018.06.02.
+    \item Seminaire de geometrie et physique mathematique, \emph{Multi-object Lie theory using synthetic differential geometry}, Universite Paris Diderot, Paris 7, 2015.12.04.
+    \item Category Theory Seminar, \emph{A Synthetic Version of Lie's Second Theorem}, University of Cambridge, 2015.11.17.
+    \item Plenary Speaker at Eduard Cech Institute Workshop, \emph{Synthetic Lie Theory}, Trest, Czech Republic, 2015.10.10.
+    \item Category Theory 2014, \emph{Synthetic Lie Theory}, University of Cambridge, 2014.07.04.
+\end{itemize}
+
+\end{document}
