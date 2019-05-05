@@ -154,6 +154,24 @@
 	}
     ],
     "talks": [
+    	{
+	    "year":"2019.03.12",
+	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
+	    "title":"Involution algebroids and their homotopy theory II",
+	    "institution":"University of Calgary"
+	},
+    	{
+	    "year":"2019.03.05",
+	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
+	    "title":"Involution algebroids and their homotopy theory",
+	    "institution":"University of Calgary"
+	},
+    	{
+	    "year":"2018.12.03",
+	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
+	    "title":"Two dimensional Lie theory",
+	    "institution":"University of Calgary"
+	},
 	{
 	    "year":"2018.10.01",
 	    "venue":"Calgary Peripatetic Seminar in Logic and Category Theory",
