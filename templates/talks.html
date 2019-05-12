@@ -4,12 +4,11 @@
 <p>
 	<div class='description'>
 		{% for talk in talks %}
-			<div style="text-align:right;">{{ talk["year"] }}</div>
 			<div>
-				<b>{{ talk["institution"] }}</b> {% if talk["website"] %}<a href='{{ talk["website"] }}'>[website]</a>{% endif %}<br />
+				<b>{{ talk["institution"] }}</b> {% if talk["website"] %}<a href='{{ talk["website"] }}'>[website]</a>{% endif %} <div class="right">{{ talk["year"] }}</div><br />
 			    <em>{{ talk["title"] }}</em> {% if talk["file"] %} <a href='./static/pdfs/{{ talk["file"] }}.pdf'>[pdf]</a>{% endif %}<br />
 			    {{ talk["venue"] }}
-			</div>
+			</div> <br>
 		{% endfor %}
 	</div>
 </p>

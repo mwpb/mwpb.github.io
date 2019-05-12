@@ -5,6 +5,8 @@ env = Environment(
     autoescape=select_autoescape(['html', 'xml'])
 )
 
+print('This script is depreciated.')
+input('Press Ctrl-C to cancel.')
 
 # template_file = open('content/template.html', 'r')
 # template_string = template_file.read()
