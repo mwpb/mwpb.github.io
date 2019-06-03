@@ -2,10 +2,76 @@
 
 * {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	line-height: 1.5;
+	/*line-height: 1.5;*/
     color: #333;
+    margin: 10px 5px 10px 5px;
 	font-size:14px;
 }
+
+p {
+	line-height: 1.5;
+	margin-left: 20px;
+	margin-right: 20px;
+	text-align: justify;
+}
+
+a {
+
+    color: #337ab7;
+    text-decoration: none;
+
+}
+
+body {
+	max-width: 66ch;
+	margin:auto;
+}
+
+h1 {
+	font-size: 36px;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.description {
+	display: grid;
+	grid-template-columns: 2fr 5fr;
+	align-items: center;
+}
+
+.title {
+	text-align: right;
+}
+
+.button {
+	border: 1px solid lightgrey;
+	border-radius: 3px;
+	padding: 10px;
+	text-decoration: none;
+	text-align: center;
+}
+.button:hover {
+	background-color: lightgrey;
+}
+
+.links {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	/*justify-items: center;*/
+}
+
+/*
+@media all and (max-width:30em){
+ a.button1{
+  display:block;
+  margin:0.4em auto;
+ }
+}
+*/
+/*
+
+
 a {
 
     color: #337ab7;
@@ -56,7 +122,7 @@ ul{
 }
 body {
 	margin: 0;
-	max-width:800px;
+	max-width:66ch;
 	overflow-x: hidden;
 	margin-right:auto;
 	margin-left:auto;
@@ -104,7 +170,6 @@ body {
 	z-index: 99;
 }
 @media(min-width:750px){
-	/* Apply when viewport is larger than 750px. */
 	.navbar-items {
 	display: grid;
 	grid-template-rows:1fr;
@@ -119,9 +184,8 @@ body {
 		display:none;
 	}
 }
-
 @media(max-width:750px){
-	/* Apply when the viewport is narrower than 750px. */
+	 Apply when the viewport is narrower than 750px. 
 	.navbar-items {
 	display: grid;
 	grid-template-rows:1fr;
@@ -135,4 +199,4 @@ body {
 	}
 	.mobile-item {
 	}
-}
+}*/*/
