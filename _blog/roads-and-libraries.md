@@ -48,7 +48,7 @@ def bfs_wrong_queue(start, adj_list, visited): # O(??)
 With this mistake a single Hackerrank test case gave me a: `Terminated due to timeout`.
 (All the rest passed.)
 Next using the usual Python list as a stack I implemented a DFS which passed all of the Hackerrank test cases.
-{% highlight python%}
+{% highlight python %}
 def dfs(start, adj_list, visited): # O(v+e)
     search_path = [start]
     visited.add(start)
