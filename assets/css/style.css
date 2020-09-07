@@ -1,0 +1,138 @@
+body {
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Default elements */
+
+p,
+div,
+h1,
+h2,
+h3,
+a {
+  font-family: sans-serif;
+  color: #373d3f;
+}
+
+/* Layouts */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.column > * {
+  margin: 10px;
+}
+.centerColumn {
+  align-items: center;
+  justify-content: center;
+}
+.descriptionGrid {
+  display: grid;
+  grid-template-columns: fit-content(100px) auto;
+  column-gap: 10px;
+}
+.center {
+  align-items: center;
+}
+.pad {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+/* Overrides */
+
+/* main {
+  margin-top: 50px;
+} */
+
+/* Other */
+
+.titleRow {
+  justify-content: space-around;
+  align-items: center;
+
+  margin-top: 10px;
+  background-color: white;
+}
+
+.titleRow > div,
+.title {
+  font-family: serif;
+  font-size: 40px;
+  text-decoration: none;
+  margin: 10px;
+  /* text-shadow: 0 0 1px rgba(0,0,0,0.3); */
+}
+.section-title {
+  font-family: serif;
+  font-size: 30px;
+  text-decoration: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.item-title {
+  font-weight: bold;
+}
+
+.titleRow > img {
+  height: 180px;
+  /* filter: contrast(0.9); */
+  filter: contrast(100%) drop-shadow(0px 0px 1px black);
+}
+
+.contactRow {
+  width: 100%;
+  justify-content: center;
+}
+.contactRow * {
+  height: 32px;
+  margin: 5px;
+}
+
+.content {
+  padding: 40px;
+}
+
+.navbar {
+  width: 100vw;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  top: 0;
+  left: 0;
+  background-color: #373d3f;
+  z-index: 99;
+}
+.navbar > * {
+  margin: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.toTopButton {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background-color: white;
+  padding: 10px;
+  /* box-shadow: 1px 1px 1px 1px; */
+  border-radius: 3px;
+  border: 1px solid silver;
+}
+.toTopButton > * {
+  text-decoration: none;
+}
+
+.aTarget {
+  display: block;
+  position: relative;
+  top: -50px;
+  visibility: hidden;
+}

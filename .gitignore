@@ -1,5 +1,5 @@
-.DS_Store
-**/.DS_Store
-miniMathJax/.DS_Store
-static/.DS_Store
-static/.DS_Store
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
