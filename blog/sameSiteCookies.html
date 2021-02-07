@@ -6,7 +6,7 @@
 <!-- 2021-02-06 Sat 17:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Find kth largest element</title>
+<title>Same-site cookies</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="mwpb" />
 <meta name="description" content="Personal webpage of Matthew Burke a mathematician and software developer"
@@ -232,71 +232,98 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Find kth largest element</h1>
+<h1 class="title">Same-site cookies</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org5a0378a">1. Definitions</a></li>
+<li><a href="#orge0e8a7f">2. Examples</a></li>
+<li><a href="#orgb96dde5">3. Same-site and cross-site requests</a></li>
+<li><a href="#orgcbbe66e">4. Consequences</a></li>
+</ul>
+</div>
+</div>
 <p>
 <a href="./index.html">Back to index</a>
 </p>
+
+<div id="outline-container-org5a0378a" class="outline-2">
+<h2 id="org5a0378a"><span class="section-number-2">1</span> Definitions</h2>
+<div class="outline-text-2" id="text-1">
 <p>
-(Elements of programming interviews 11.8.)
+<b>Origin:</b> Two URLs have the same origin if and only if they have the same scheme, host and port.
 </p>
 
 <p>
-Consider the problem of finding the `k`th largest element in an unsorted array.
-We can use the following modification of heap sort.
+<b>Site:</b> The host's most specific public suffix AND the next specifier.
 </p>
 
-<div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">import</span> heapq
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">kth_largest</span>(l, k): <span style="color: #b22222;"># </span><span style="color: #b22222;">O(n log(k))</span>
-    <span style="color: #a0522d;">min_heap</span> = []
-    <span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> l:
-        <span style="color: #a020f0;">if</span> <span style="color: #483d8b;">len</span>(min_heap) &lt; k:
-            heapq.heappush(min_heap, i)
-        <span style="color: #a020f0;">elif</span> min_heap[0] &lt; i:
-            heapq.heappushpop(min_heap, i)
-    <span style="color: #a020f0;">return</span> min_heap[0]
-</pre>
+<p>
+The definition of public suffix is made in the <a href="https://publicsuffix.org/list/">public-suffix list</a> and may change.
+</p>
+
+<p>
+The 'SameSite' cookie indeed concerns itself with sites and not domains.
+</p>
+</div>
 </div>
 
+<div id="outline-container-orge0e8a7f" class="outline-2">
+<h2 id="orge0e8a7f"><span class="section-number-2">2</span> Examples</h2>
+<div class="outline-text-2" id="text-2">
 <p>
-which runs in `O(N*log(K))` time because each call to `heappush` or `heappushpop` is `O(log(K))`.
+<a href="https://www.example.org">https://www.example.org</a> has .org as the most specific public suffix.
+Therefore the site is example.org.
 </p>
 
 <p>
-In fact if we use a variation of quicksort we can get an <b>average-case</b> time complexity of `O(N)` but a worst-case time complexity of `O(N<sup>2</sup>)`.
-The idea is that by partitioning the array around a pivot element we can eliminate many elements of the array at once.
-An extremely rough implementation might be as follows:
+<a href="https://mwpb.github.io">https://mwpb.github.io</a> has github.io as the most specific public suffix.
+Therefore mwpb.github.io is the site.
 </p>
-<div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">from</span> random <span style="color: #a020f0;">import</span> randrange
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">qs_imitation</span>(l, k): <span style="color: #b22222;"># </span><span style="color: #b22222;">worst case O(N^2) average case O(N)</span>
-    <span style="color: #a020f0;">print</span>(f<span style="color: #8b2252;">'qs_imitation({l}, {k})'</span>)
-    <span style="color: #a0522d;">m</span> = randrange(<span style="color: #483d8b;">len</span>(l))
-    <span style="color: #a0522d;">pivot</span> = l[m]
-    <span style="color: #a0522d;">above</span> = []
-    <span style="color: #a0522d;">below</span> = []
-    <span style="color: #a0522d;">same</span> = []
-    <span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> l:
-        <span style="color: #a020f0;">if</span> i &gt; pivot:
-            above.append(i)
-        <span style="color: #a020f0;">elif</span> i &lt; pivot:
-            below.append(i)
-        <span style="color: #a020f0;">else</span>:
-            same.append(i)
-    <span style="color: #a020f0;">print</span>(m, below, same, above)
-    <span style="color: #a020f0;">if</span> <span style="color: #483d8b;">len</span>(above) == k-1:
-        <span style="color: #a020f0;">return</span> pivot
-    <span style="color: #a020f0;">elif</span> <span style="color: #483d8b;">len</span>(above) &gt;= k:
-        <span style="color: #a020f0;">return</span> qs_imitation(above, k)
-    <span style="color: #a020f0;">elif</span> <span style="color: #483d8b;">len</span>(above) + <span style="color: #483d8b;">len</span>(same) &gt; k:
-        <span style="color: #a020f0;">return</span> pivot
-    <span style="color: #a020f0;">else</span>:
-        <span style="color: #a020f0;">return</span> qs_imitation(below, k-<span style="color: #483d8b;">len</span>(above)-<span style="color: #483d8b;">len</span>(same))
-</pre>
 </div>
+</div>
+
+<div id="outline-container-orgb96dde5" class="outline-2">
+<h2 id="orgb96dde5"><span class="section-number-2">3</span> Same-site and cross-site requests</h2>
+<div class="outline-text-2" id="text-3">
 <p>
-where the problem is that we have no way of guaranteeing that the randomly chosen element isn't the largest element each time.
+<b>Same-site:</b>
 </p>
+
+<p>
+<a href="https://foo.example.com">https://foo.example.com</a> to <a href="https://bar.example.com">https://bar.example.com</a>
+</p>
+
+<p>
+<a href="https://foo.bar.example.com">https://foo.bar.example.com</a> to <a href="https://bar.example.com">https://bar.example.com</a>
+</p>
+
+<p>
+<b>Cross-site:</b>
+</p>
+
+<p>
+<a href="https://foo.github.io">https://foo.github.io</a> to <a href="https://bar.github.io">https://bar.github.io</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcbbe66e" class="outline-2">
+<h2 id="orgcbbe66e"><span class="section-number-2">4</span> Consequences</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+If a subdomain on the same site is compromised then cookies set by one will be sent to the other.
+</p>
+
+<p>
+So strictly speaking cross-site request forgery (CSRF) is ruled out by setting SameSite=strict.
+(An argument by authority exists <a href="https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-02#section-8.8.2">here</a>.)
+However a similar attack may still be perpetrated by URLs on the same site but which are not under your control.
+This makes CSRF something of a misnomer because the style of attack may still occur on the same site.
+</p>
+</div>
+</div>
 </div>
 </body>
 </html>
