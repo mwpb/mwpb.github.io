@@ -1,27 +1,49 @@
----
-layout: blog
-title: "Minimum inscribed triangle"
-tags: mathematics teaching
----
+<!doctype html>
 
-<link rel="stylesheet" type="text/css" href="/assets/css/jsxgraph.css" />
-<script
-  id="hide"
-  src="/assets/js/miniMathJax/MathJax.js?config=TeX-AMS_SVG"
-></script>
-<script id="hide">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Matthew Burke</title>
+  <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    tex2jax: { inlineMath: [["$", "$"]] },
-    imageFont: null,
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
   });
+  </script>
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js">
 </script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<style>
+  body {
+    width: 99vw;
+    max-width: 99vw;
+    margin: 0px;
+    padding:5px;
+  }
+</style>
+
+<body>
+
+<link rel="stylesheet" type="text/css" href="jsxgraph.css" />
 <script
   id="inline"
   type="text/javascript"
-  src="/assets/js/jsxgraphcore.js"
-></script>
-<div style="float: left; width: 50%">
-  <h2>Fixing one point</h2>
+  src="jsxgraphcore.js"
+  ></script>
+<div style="display:flex">
+<div style="width: 45%; margin: 5px">
+  <h2>Minimum inscribed triangle</h2>
   <p><em>The minimum inscribed triangle when one vertex is fixed.</em></p>
   <div
     id="box"
@@ -38,7 +60,7 @@ tags: mathematics teaching
     </button>
   </div>
 </div>
-<div style="float: right; width: 49%; height: 320px">
+<div style="width: 45%; height: 320px; margin: 5px">
   <p id="main0">
     We want to find the minimum inscribed triangle of the fixed large black
     triangle that passes through the fixed point $F$. At the moment the red
@@ -66,4 +88,7 @@ tags: mathematics teaching
     $F'F''$.
   </p>
 </div>
+</div>
 <script id="inline" type="text/javascript" src="inscribed.js"></script>
+</body>
+</html>

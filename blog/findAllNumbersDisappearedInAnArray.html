@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-02-07 Sun 15:19 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>mwpb Home</title>
+<title>Find all numbers disappeared in an array</title>
 <meta name="generator" content="Org mode">
 <meta name="author" content="mwpb">
+<meta name="description" content="Personal webpage of Matthew Burke a mathematician and software developer"
+>
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -178,6 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
+<link rel='stylesheet' type='text/css' href='style.css'>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -227,13 +229,98 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">mwpb Home</h1>
+<h1 class="title">Find all numbers disappeared in an array</h1>
+<p>
+<a href="./index.html">Back to index</a>
+</p>
 
+<p>
+From the LeetCode problem with the same name.
+The problem statement is:
+</p>
+<blockquote>
+<p>
+Given an array of integers where 1&lt;=a[i]&lt;=n (n = size of array), some elements appear twice and others appear once.
+</p>
+
+<p>
+Find all the elements of [1,n] inclusive that do not appear in this array.
+</p>
+
+<p>
+Could you do it without extra space and in O(n) runtime?
+You may assume the returned list does not count as extra space.
+</p>
+</blockquote>
+
+<p>
+If we can use extra space the problem is easy:
+we use a Set to keep track of the remaining elements.
+</p>
+
+<p>
+If we want to do the question in-place we should use the fact that there is a natural choice of where to store each element.
+Namely at the key that it corresponds to.
+I.e. we can store 4 in the 3rd position (0-indexed).
+Then the only problem is to avoid overwriting elements.
+</p>
+
+<p>
+To avoid overwriting elements we proceed in a chain.
+Whenever we move an element to the position corresponding to its value we immediately consider the element we just displaced and move it next.
+There is no guarantee that the whole array will be finished in one chain.
+Therefore we have to keep track of our starting point and start another chain if we need to.
+</p>
+
+<p>
+A full solution could be as follows:
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Solution</span> {
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #0000ff;">findDisappearedNumbers</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">nums</span>) {
+    moveValuesToTheirKey(nums);
+
+    <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">missing</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">LinkedList</span>&lt;<span style="color: #228b22;">Integer</span>&gt;();
+    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">j</span> = 0; j &lt; nums.<span style="color: #228b22;">length</span>; j++) {
+      <span style="color: #a020f0;">if</span> (nums[j] == 0) missing.add(j + 1);
+    }    
+
+    <span style="color: #a020f0;">return</span> missing;
+  }
+
+  <span style="color: #228b22;">void</span> <span style="color: #0000ff;">moveValuesToTheirKey</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">nums</span>) {
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0;
+    <span style="color: #a020f0;">while</span> (i &lt; nums.<span style="color: #228b22;">length</span>) {
+      <span style="color: #228b22;">int</span> <span style="color: #a0522d;">value</span> = nums[i];
+      <span style="color: #a020f0;">if</span> (value - 1 == i) {
+        i++;
+        <span style="color: #a020f0;">continue</span>;
+      }
+
+      nums[i] = 0;
+      <span style="color: #a020f0;">while</span> (0 &lt; value &amp;&amp; value &lt;= nums.length) {
+        value = swapIn(value, nums);
+      }
+      i++;
+    }
+  }
+
+  <span style="color: #228b22;">int</span> <span style="color: #0000ff;">swapIn</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">value</span>, <span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">nums</span>) {
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">target</span> = nums[value - 1];
+    <span style="color: #a020f0;">if</span> (value == target) <span style="color: #a020f0;">return</span> -1;
+    nums[value - 1] = value;
+    <span style="color: #a020f0;">return</span> target;
+  }
+}
+</pre>
 </div>
-<div id="postamble" class="status">
-<p class="author">Author: mwpb</p>
-<p class="date">Created: 2021-02-07 Sun 15:19</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+
+<p>
+Having looked through some other submissions on LeetCode I learnt another trick.
+Instead of moving the values one can come up with a way of marking which positions have been used.
+The most common way to do this was by replacing the target position with its negation.
+In a way this solution uses more memory because now the integers must be signed.
+</p>
 </div>
 </body>
 </html>
