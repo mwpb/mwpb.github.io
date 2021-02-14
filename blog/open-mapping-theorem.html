@@ -1,22 +1,31 @@
----
-layout: blog
-title: "The open mapping theorem in complex analysis"
-tags: mathematics teaching
----
+<!doctype html>
 
-<script>
-  MathJax = {
-    tex: { inlineMath: [["$", "$"]] },
-    imageFont: null,
-    messageStyle: "none",
-  };
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Matthew Burke</title>
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
 </script>
-<script
-  type="text/javascript"
-  id="MathJax-script"
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-></script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js">
+</script>
+  <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<h1>The open mapping theorem</h1>
 The open mapping theorem is often presented as a corollary of Rouché's theorem.
 However it is possible to prove the open mapping theorem using less theoretical and more elementary methods.
 
@@ -43,8 +52,8 @@ open and by our previous argument $f(V)$ is open. Therefore $f(U)$ is open.
 We have just seen that not every polynomial is an open mapping when considered
 as a function of a real variable. However as a function of a complex variable
 any non-constant polynomial $p(z) = \sum_{i=0}^n c_i z^i$ is an open mapping.
-Again if $U$ is any open ball centered at $z_0$ where $p'(z_0)\neq 0$ then
-$p(U)$ is open by the inverse function theorem. If $p'(z_0) = 0$ then we can
+Again if $U$ is any open ball centered at $z_0$ where $p&#39;(z_0)\neq 0$ then
+$p(U)$ is open by the inverse function theorem. If $p&#39;(z_0) = 0$ then we can
 write (using the assumption that $p$ is non-constant) \[p(z) = c_k (z-z_0)^k
 h(z)\] where $k\in {\mathbb N}$, $c_k\in {\mathbb C}$ and $h(z_0) = 1$. Since
 $h$ is continuous (it is in fact a polynomial) we can choose $\delta > 0$ such
@@ -54,4 +63,6 @@ $f(B_{z_0}(\delta))$ contains $B_0\left(c_k\delta^{\frac{1}{k}}/2\right)$.
 <h2>The open mapping theorem</h2>
 
 In fact every function of a complex variable is either constant or an open
-mapping. To see this we combine the previous section with Taylor's theorem..
+mapping. To see this we combine the previous section with Taylor&#39;s theorem..
+
+</body>
