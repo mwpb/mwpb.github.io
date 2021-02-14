@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>mwpb blog</title>
+<title>Object oriented programming</title>
 <meta name="generator" content="Org mode">
 <meta name="author" content="mwpb">
 <meta name="description" content="Personal webpage of Matthew Burke a mathematician and software developer"
@@ -229,160 +229,68 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">mwpb blog
-<br>
-<span class="subtitle">My home page is <a href="../index.html">here</a>.</span>
-</h1>
+<h1 class="title">Object oriented programming</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org72daa63">Mathematics</a></li>
-<li><a href="#org34136fa">Teaching</a></li>
-<li><a href="#org06b4a95">General coding</a></li>
-<li><a href="#orgc750102">Java</a>
-<ul>
-<li><a href="#org61e561b">Excercism</a></li>
-<li><a href="#org24f3681">LeetCode</a></li>
-</ul>
-</li>
-<li><a href="#org88ad52f">Python</a>
-<ul>
-<li><a href="#org9960c1f">Elements of programming interviews</a></li>
-<li><a href="#org6d48d35">HackerRank</a></li>
-</ul>
-</li>
+<li><a href="#org9da54a1">1. Encapsulation</a></li>
+<li><a href="#org7fd2f67">2. Abstraction - the main one</a></li>
+<li><a href="#orga2b25d2">3. Inheritance</a></li>
+<li><a href="#orgfd6cec7">4. Polymorphism</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org72daa63" class="outline-2">
-<h2 id="org72daa63">Mathematics</h2>
-<div class="outline-text-2" id="text-org72daa63">
 <p>
-<a href="inscribed.html">Minimum inscribed triangle</a>
+<a href="./index.html">Back to index</a>
 </p>
 
+<div id="outline-container-org9da54a1" class="outline-2">
+<h2 id="org9da54a1"><span class="section-number-2">1</span> Encapsulation</h2>
+<div class="outline-text-2" id="text-1">
 <p>
-<a href="inverse-function-theorem.html">The inverse function theorem</a>
-</p>
-
-<p>
-<a href="open-mapping-theorem.html">Open mapping theorem</a>
+A class keeps some things private and makes others public.
+A third-party library can prevent consumers using certain methods.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org34136fa" class="outline-2">
-<h2 id="org34136fa">Teaching</h2>
-<div class="outline-text-2" id="text-org34136fa">
+<div id="outline-container-org7fd2f67" class="outline-2">
+<h2 id="org7fd2f67"><span class="section-number-2">2</span> Abstraction - the main one</h2>
+<div class="outline-text-2" id="text-2">
 <p>
-<a href="introEigenvectors.html">Eigenvectors without determinants: introduction</a>
+Using encapsulation to hide implementation details.
+This means that the implementation can be changed without affecting other code.
+Reduces the amount of code changes in a refactor.
 </p>
 
 <p>
-<a href="distinctEigenvalues.html">Eigenvectors without determinants: distinct eigenvalues</a>
-</p>
-
-<p>
-<a href="complexEigenvalues.html">Eigenvectors without determinants: complex eigenvalues</a>
+For instance using a class to manage access to a database table.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org06b4a95" class="outline-2">
-<h2 id="org06b4a95">General coding</h2>
-<div class="outline-text-2" id="text-org06b4a95">
+<div id="outline-container-orga2b25d2" class="outline-2">
+<h2 id="orga2b25d2"><span class="section-number-2">3</span> Inheritance</h2>
+<div class="outline-text-2" id="text-3">
 <p>
-<a href="sameSiteCookies.html">Same site cookie subtlety</a>
-</p>
-
-<p>
-<a href="object_oriented_programming.html">Object oriented programming</a>
+Reuse code between classes.
+Usually a more specific class extends a more abstract class.
+But methods can be overridden also.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgc750102" class="outline-2">
-<h2 id="orgc750102">Java</h2>
-<div class="outline-text-2" id="text-orgc750102">
-</div>
-<div id="outline-container-org61e561b" class="outline-3">
-<h3 id="org61e561b">Excercism</h3>
-<div class="outline-text-3" id="text-org61e561b">
+<div id="outline-container-orgfd6cec7" class="outline-2">
+<h2 id="orgfd6cec7"><span class="section-number-2">4</span> Polymorphism</h2>
+<div class="outline-text-2" id="text-4">
 <p>
-<a href="hierholzer.html">Hierholzer</a> 
-</p>
-</div>
-</div>
-
-
-<div id="outline-container-org24f3681" class="outline-3">
-<h3 id="org24f3681">LeetCode</h3>
-<div class="outline-text-3" id="text-org24f3681">
-<p>
-<a href="leetcode-find-numbers-with-even-number-of-digits.html">Find numbers with even number of digits</a>
+Cast a class to a more abstract class that it implements.
 </p>
 
 <p>
-<a href="leetcode-squares-of-a-sorted-array.html">Squares of a sorted array</a>
+For instance might want a list of nodes for a table of contents but these nodes could be either folder nodes or content nodes.
 </p>
-
-<p>
-<a href="leetcode-duplicate-zeros.html">Duplicate zeros</a>
-</p>
-
-<p>
-<a href="leetcode-merge-sorted-array.html">Merge sorted array</a>
-</p>
-
-<p>
-<a href="leetcode-remove-duplicates-from-sorted-array.html">Remove duplicates from sorted array</a>
-</p>
-
-<p>
-<a href="findAllNumbersDisappearedInAnArray.html">Find all numbers disappeared in an array</a>
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org88ad52f" class="outline-2">
-<h2 id="org88ad52f">Python</h2>
-<div class="outline-text-2" id="text-org88ad52f">
-</div>
-<div id="outline-container-org9960c1f" class="outline-3">
-<h3 id="org9960c1f">Elements of programming interviews</h3>
-<div class="outline-text-3" id="text-org9960c1f">
-<p>
-<a href="find-kth-largest-element.html">Find kth largest element</a>
-</p>
-
-<p>
-<a href="nearest_repeated_entries.html">Nearest repeated entries</a>
-</p>
-</div>
-</div>
-
-<div id="outline-container-org6d48d35" class="outline-3">
-<h3 id="org6d48d35">HackerRank</h3>
-<div class="outline-text-3" id="text-org6d48d35">
-<p>
-<a href="roads-and-libraries.html">Roads and libraries</a>
-</p>
-
-<p>
-<a href="find-nearest-clone.html">Find nearest clone</a>
-</p>
-
-<p>
-<a href="q-with-two-stacks.html">Queue with two stacks</a>
-</p>
-
-<p>
-<a href="nearest_absolute_difference.html">Nearest absolute difference</a>
-</p>
-</div>
 </div>
 </div>
 </div>
