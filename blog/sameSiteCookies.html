@@ -245,23 +245,30 @@ for the JavaScript code in this tag.
 <a href="./index.html">Back to index</a>
 </p>
 
+<p>
+If you would like to see a demonstration of the main point of this post then please see <a href="https://github.com/mwpb/web-attacks">https://github.com/mwpb/web-attacks</a> and navigate to the <i>csrf</i> folder.
+In that repository there are instructions about how to set up a some docker containers to demonstrate the various attacks.
+</p>
+
 <div id="outline-container-orgf56241e" class="outline-2">
 <h2 id="orgf56241e"><span class="section-number-2">1</span> Definitions</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-<b>Origin:</b> Two URLs have the same origin if and only if they have the same scheme, host and port.
+<b>Origin:</b> Two URLs have the same origin if and only if they have the same scheme, host-name and port.
 </p>
 
 <p>
 <b>Site:</b> The host's most specific public suffix AND the next specifier.
+This is sometimes written as eTLD+1 which stands for Effective Top-Level Domain plus one.
 </p>
 
 <p>
 The definition of public suffix is made in the <a href="https://publicsuffix.org/list/">public-suffix list</a> and may change.
+For more information (including the definition of 'schemeful same-site') please <a href="https://web.dev/same-site-same-origin/">web.dev/same-site-same-origin</a>.
 </p>
 
 <p>
-The 'SameSite' cookie indeed concerns itself with sites and not domains.
+The 'SameSite' cookie indeed concerns itself with sites and not origins.
 </p>
 </div>
 </div>
@@ -301,6 +308,10 @@ Therefore mwpb.github.io is the site.
 </p>
 
 <p>
+<a href="https://foo.com">https://foo.com</a> to <a href="https://bar.com">https://bar.com</a>
+</p>
+
+<p>
 <a href="https://foo.github.io">https://foo.github.io</a> to <a href="https://bar.github.io">https://bar.github.io</a>
 </p>
 </div>
@@ -315,9 +326,16 @@ If a subdomain on the same site is compromised then cookies set by one will be s
 
 <p>
 So strictly speaking cross-site request forgery (CSRF) is ruled out by setting SameSite=strict.
-(An argument by authority exists <a href="https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-02#section-8.8.2">here</a>.)
 However a similar attack may still be perpetrated by URLs on the same site but which are not under your control.
-This makes CSRF something of a misnomer because the style of attack may still occur on the same site.
+This makes CSRF a confusing name because the same style of attack may still occur on the same site.
+</p>
+
+<p>
+So the SameSite=strict cookies will still be sent.
+For the purposes of defence in depth in case a subdomain gets compromised:
+it is a good idea to use another strategy in addition to SameSite cookies.
+If you only support clients using modern browsers then you can check the Origin header on the server-side.
+Otherwise using CSRF tokens might be appropriate.
 </p>
 </div>
 </div>
