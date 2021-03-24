@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Object oriented programming</title>
+<title>Reverse linked list</title>
 <meta name="generator" content="Org mode">
 <meta name="author" content="mwpb">
 <meta name="description" content="Personal webpage of Matthew Burke a mathematician and software developer"
@@ -229,69 +229,47 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Object oriented programming</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org6fe6892">1. Encapsulation</a></li>
-<li><a href="#org6412ff6">2. Abstraction - the main one</a></li>
-<li><a href="#org78af944">3. Inheritance</a></li>
-<li><a href="#org3f3b189">4. Polymorphism</a></li>
-</ul>
-</div>
-</div>
+<h1 class="title">Reverse linked list</h1>
 <p>
 <a href="./index.html">Back to index</a>
 </p>
 
-<div id="outline-container-org6fe6892" class="outline-2">
-<h2 id="org6fe6892"><span class="section-number-2">1</span> Encapsulation</h2>
-<div class="outline-text-2" id="text-1">
 <p>
-A class keeps some things private and makes others public.
-A third-party library can prevent consumers using certain methods.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org6412ff6" class="outline-2">
-<h2 id="org6412ff6"><span class="section-number-2">2</span> Abstraction - the main one</h2>
-<div class="outline-text-2" id="text-2">
-<p>
-Using encapsulation to hide implementation details.
-This means that the implementation can be changed without affecting other code.
-Reduces the amount of code changes in a refactor.
+From the LeetCode problem with the same name.
+The problem statement is:
 </p>
 
+<blockquote>
 <p>
-For instance using a class to manage access to a database table.
+Given the head of a singly linked list, reverse the list, and return the reversed list.
 </p>
-</div>
-</div>
-
-<div id="outline-container-org78af944" class="outline-2">
-<h2 id="org78af944"><span class="section-number-2">3</span> Inheritance</h2>
-<div class="outline-text-2" id="text-3">
-<p>
-Reuse code between classes.
-Usually a more specific class extends a more abstract class.
-But methods can be overridden also.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org3f3b189" class="outline-2">
-<h2 id="org3f3b189"><span class="section-number-2">4</span> Polymorphism</h2>
-<div class="outline-text-2" id="text-4">
-<p>
-Cast a class to a more abstract class that it implements.
-</p>
+</blockquote>
 
 <p>
-For instance might want a list of nodes for a table of contents but these nodes could be either folder nodes or content nodes.
+This is not difficult but is an important technique.
+The idea is to iterate through the list and move each node in turn to the start of the list.
+Note that we essentially have two pointers in the following solution.
+One is the head of the list (which is changing!) and one is the next node to transfer to the start.
 </p>
-</div>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Solution</span> {
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">ListNode</span> <span style="color: #0000ff;">reverseList</span>(<span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">head</span>) {
+    <span style="color: #a020f0;">if</span> (head == <span style="color: #008b8b;">null</span> || head.next == <span style="color: #008b8b;">null</span>) {
+      <span style="color: #a020f0;">return</span> head;
+    }
+    <span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">current</span> = head.next;
+    head.next = <span style="color: #008b8b;">null</span>;
+    <span style="color: #a020f0;">while</span> (current != <span style="color: #008b8b;">null</span>) {
+      <span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">tmp</span> = current.next;
+      current.next = head;
+      head = current;
+      current = tmp;
+    }
+    <span style="color: #a020f0;">return</span> head;
+  }
+}
+</pre>
 </div>
 </div>
 </body>

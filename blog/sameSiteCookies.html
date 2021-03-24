@@ -234,10 +234,10 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf56241e">1. Definitions</a></li>
-<li><a href="#orga782b47">2. Examples</a></li>
-<li><a href="#orgdd53122">3. Same-site and cross-site requests</a></li>
-<li><a href="#orgcc1c002">4. Consequences</a></li>
+<li><a href="#org6fd94da">1. Definitions</a></li>
+<li><a href="#org378cf90">2. Examples</a></li>
+<li><a href="#org60b9daa">3. Same-site and cross-site requests</a></li>
+<li><a href="#org540be9e">4. Consequences</a></li>
 </ul>
 </div>
 </div>
@@ -250,8 +250,8 @@ If you would like to see a demonstration of the main point of this post then ple
 In that repository there are instructions about how to set up a some docker containers to demonstrate the various attacks.
 </p>
 
-<div id="outline-container-orgf56241e" class="outline-2">
-<h2 id="orgf56241e"><span class="section-number-2">1</span> Definitions</h2>
+<div id="outline-container-org6fd94da" class="outline-2">
+<h2 id="org6fd94da"><span class="section-number-2">1</span> Definitions</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <b>Origin:</b> Two URLs have the same origin if and only if they have the same scheme, host-name and port.
@@ -273,8 +273,8 @@ The 'SameSite' cookie indeed concerns itself with sites and not origins.
 </div>
 </div>
 
-<div id="outline-container-orga782b47" class="outline-2">
-<h2 id="orga782b47"><span class="section-number-2">2</span> Examples</h2>
+<div id="outline-container-org378cf90" class="outline-2">
+<h2 id="org378cf90"><span class="section-number-2">2</span> Examples</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 <a href="https://www.example.org">https://www.example.org</a> has .org as the most specific public suffix.
@@ -288,8 +288,8 @@ Therefore mwpb.github.io is the site.
 </div>
 </div>
 
-<div id="outline-container-orgdd53122" class="outline-2">
-<h2 id="orgdd53122"><span class="section-number-2">3</span> Same-site and cross-site requests</h2>
+<div id="outline-container-org60b9daa" class="outline-2">
+<h2 id="org60b9daa"><span class="section-number-2">3</span> Same-site and cross-site requests</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 <b>Same-site:</b>
@@ -317,8 +317,8 @@ Therefore mwpb.github.io is the site.
 </div>
 </div>
 
-<div id="outline-container-orgcc1c002" class="outline-2">
-<h2 id="orgcc1c002"><span class="section-number-2">4</span> Consequences</h2>
+<div id="outline-container-org540be9e" class="outline-2">
+<h2 id="org540be9e"><span class="section-number-2">4</span> Consequences</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 If a subdomain on the same site is compromised then cookies set by one will be sent to the other.
