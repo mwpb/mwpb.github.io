@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-05-10 Mon 20:43 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>mwpb home</title>
+<title>Copy list with random pointer</title>
 <meta name="generator" content="Org mode">
 <meta name="author" content="mwpb">
+<meta name="description" content="Personal webpage of Matthew Burke a mathematician and software developer"
+>
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -178,6 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
+<link rel='stylesheet' type='text/css' href='style.css'>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -227,13 +229,59 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">mwpb home</h1>
+<h1 class="title">Copy list with random pointer</h1>
+<p>
+<a href="./index.html">Back to index</a>
+</p>
 
+<p>
+From the LeetCode problem with the same name.
+In this problem we are asked to construct a deep copy of a linked list that has a little additional structure.
+The additional structure is that every node has &#x2013; in addition to the next pointer &#x2013; a 'random' pointer that points to some other node.
+</p>
+
+<p>
+It can be complex if we mix up the creation of new nodes and the adding of pointers.
+So one strategy to create the deep copy is to first create a 'blank' copy in which we clone each of the nodes and keep track of the bijection between the new nodes and the old nodes with a HashMap.
+Then we can safely copy all of the structure by iterating over the original list and making links to the appropriate new node that we can look up with our HashMap.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Solution</span> {
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">Node</span> <span style="color: #0000ff;">copyRandomList</span>(<span style="color: #228b22;">Node</span> <span style="color: #a0522d;">head</span>) {
+    <span style="color: #a020f0;">if</span> (head == <span style="color: #008b8b;">null</span>) {
+      <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">null</span>;
+    }
+
+    <span style="color: #228b22;">Map</span>&lt;<span style="color: #228b22;">Node</span>, <span style="color: #228b22;">Node</span>&gt; <span style="color: #a0522d;">old2New</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">HashMap</span>&lt;&gt;();
+
+    <span style="color: #228b22;">Node</span> <span style="color: #a0522d;">current</span> = head;
+
+    <span style="color: #a020f0;">while</span> (current != <span style="color: #008b8b;">null</span>) {
+      <span style="color: #228b22;">Node</span> <span style="color: #a0522d;">newCurrent</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Node</span>(current.val);
+      old2New.put(current, newCurrent);
+      current = current.next;
+    }
+
+    current = head;    
+    <span style="color: #a020f0;">while</span> (current != <span style="color: #008b8b;">null</span>) {
+      <span style="color: #228b22;">Node</span> <span style="color: #a0522d;">newCurrent</span> = old2New.get(current);
+      <span style="color: #a020f0;">if</span> (current.next != <span style="color: #008b8b;">null</span>) {
+        newCurrent.next = old2New.get(current.next);
+      }
+
+      <span style="color: #a020f0;">if</span> (current.random != <span style="color: #008b8b;">null</span>) {
+        newCurrent.random = old2New.get(current.random);
+      }
+
+      current = current.next;
+    }
+
+    <span style="color: #a020f0;">return</span> old2New.get(head);
+  }
+}
+</pre>
 </div>
-<div id="postamble" class="status">
-<p class="author">Author: mwpb</p>
-<p class="date">Created: 2021-05-10 Mon 20:43</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>
