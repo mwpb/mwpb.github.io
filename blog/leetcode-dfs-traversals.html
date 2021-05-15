@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>mwpb blog</title>
+<title>Depth first search traversals</title>
 <meta name="generator" content="Org mode">
 <meta name="author" content="mwpb">
 <meta name="description" content="Personal webpage of Matthew Burke a mathematician and software developer"
@@ -229,177 +229,148 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">mwpb blog
-<br>
-<span class="subtitle">My home page is <a href="../index.html">here</a>.</span>
-</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org13ce3b8">Mathematics</a></li>
-<li><a href="#org76970ef">Teaching</a></li>
-<li><a href="#org5137910">General coding</a></li>
-<li><a href="#org66ef551">Java</a>
-<ul>
-<li><a href="#org51b3cd2">Excercism</a></li>
-<li><a href="#orgdb7d4a0">LeetCode</a></li>
-</ul>
-</li>
-<li><a href="#orga97048b">Python</a>
-<ul>
-<li><a href="#orgcd48b20">Elements of programming interviews</a></li>
-<li><a href="#org3f2c5ec">HackerRank</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org13ce3b8" class="outline-2">
-<h2 id="org13ce3b8">Mathematics</h2>
-<div class="outline-text-2" id="text-org13ce3b8">
+<h1 class="title">Depth first search traversals</h1>
 <p>
-<a href="inscribed.html">Minimum inscribed triangle</a>
+<a href="./index.html">Back to index</a>
 </p>
 
 <p>
-<a href="inverse-function-theorem.html">The inverse function theorem</a>
+We carry out the three common types of depth first search without using recursion.
+To keep track of where we are in the tree we use a stack, which we call the search path.
+The difference between the pre-order, in-order and post-order traversals is simply the stage at which we add the node to the output list.
+Note that we use an additional set to keep track of the nodes we have visited.
+This way we don't have to modify the original tree.
+If it was for some reason preferable to modify the original tree (perhaps to save memory) then we could instead set the appropriate pointers to null.
 </p>
 
 <p>
-<a href="open-mapping-theorem.html">Open mapping theorem</a>
-</p>
-</div>
-</div>
-
-<div id="outline-container-org76970ef" class="outline-2">
-<h2 id="org76970ef">Teaching</h2>
-<div class="outline-text-2" id="text-org76970ef">
-<p>
-<a href="introEigenvectors.html">Eigenvectors without determinants: introduction</a>
+Also note that we use an ArrayDeque to implement a Deque.
 </p>
 
 <p>
-<a href="distinctEigenvalues.html">Eigenvectors without determinants: distinct eigenvalues</a>
+The pre-order traversal adds the node to the output list before processing the left or the right sub-tree.
 </p>
 
-<p>
-<a href="complexEigenvalues.html">Eigenvectors without determinants: complex eigenvalues</a>
-</p>
-</div>
-</div>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #0000ff;">preorderTraversal</span>(<span style="color: #228b22;">TreeNode</span> <span style="color: #a0522d;">root</span>) {
+  <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">preOrder</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">LinkedList</span>&lt;&gt;();
+  <span style="color: #a020f0;">if</span> (root == <span style="color: #008b8b;">null</span>) {
+    <span style="color: #a020f0;">return</span> preOrder;
+  }
 
-<div id="outline-container-org5137910" class="outline-2">
-<h2 id="org5137910">General coding</h2>
-<div class="outline-text-2" id="text-org5137910">
-<p>
-<a href="sameSiteCookies.html">Same site cookie subtlety</a>
-</p>
+  <span style="color: #228b22;">Deque</span>&lt;<span style="color: #228b22;">TreeNode</span>&gt; <span style="color: #a0522d;">searchPath</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ArrayDeque</span>&lt;&gt;();
+  <span style="color: #228b22;">Set</span>&lt;<span style="color: #228b22;">TreeNode</span>&gt; <span style="color: #a0522d;">visited</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">HashSet</span>&lt;&gt;();
 
-<p>
-<a href="object_oriented_programming.html">Object oriented programming</a>
-</p>
-</div>
+  searchPath.push(root);
+
+  <span style="color: #a020f0;">while</span> (searchPath.size() &gt; 0) {
+    <span style="color: #228b22;">TreeNode</span> <span style="color: #a0522d;">node</span> = searchPath.peek();
+
+    <span style="color: #a020f0;">if</span> (!visited.contains(node)) {
+      preOrder.add(node.val);
+      visited.add(node);
+    }
+
+    <span style="color: #a020f0;">if</span> (node.left != <span style="color: #008b8b;">null</span> &amp;&amp; !visited.contains(node.left)) {
+      searchPath.push(node.left);
+      <span style="color: #a020f0;">continue</span>;
+    }
+
+    <span style="color: #a020f0;">if</span> (node.right != <span style="color: #008b8b;">null</span> &amp;&amp; !visited.contains(node.right)) {
+      searchPath.push(node.right);
+      <span style="color: #a020f0;">continue</span>;
+    }
+
+    searchPath.pop();
+  }
+
+  <span style="color: #a020f0;">return</span> preOrder;
+}
+</pre>
 </div>
 
-<div id="outline-container-org66ef551" class="outline-2">
-<h2 id="org66ef551">Java</h2>
-<div class="outline-text-2" id="text-org66ef551">
-</div>
-<div id="outline-container-org51b3cd2" class="outline-3">
-<h3 id="org51b3cd2">Excercism</h3>
-<div class="outline-text-3" id="text-org51b3cd2">
 <p>
-<a href="hierholzer.html">Hierholzer</a> 
-</p>
-</div>
-</div>
-
-
-<div id="outline-container-orgdb7d4a0" class="outline-3">
-<h3 id="orgdb7d4a0">LeetCode</h3>
-<div class="outline-text-3" id="text-orgdb7d4a0">
-<p>
-<a href="leetcode-find-numbers-with-even-number-of-digits.html">Find numbers with even number of digits</a>
+The in-order traversal adds the node to the output list in between processing the left and the right sub-tree.
 </p>
 
-<p>
-<a href="leetcode-squares-of-a-sorted-array.html">Squares of a sorted array</a>
-</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #0000ff;">preorderTraversal</span>(<span style="color: #228b22;">TreeNode</span> <span style="color: #a0522d;">root</span>) {
+  <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">preOrder</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">LinkedList</span>&lt;&gt;();
+  <span style="color: #a020f0;">if</span> (root == <span style="color: #008b8b;">null</span>) {
+    <span style="color: #a020f0;">return</span> preOrder;
+  }
 
-<p>
-<a href="leetcode-duplicate-zeros.html">Duplicate zeros</a>
-</p>
+  <span style="color: #228b22;">Deque</span>&lt;<span style="color: #228b22;">TreeNode</span>&gt; <span style="color: #a0522d;">searchPath</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ArrayDeque</span>&lt;&gt;();
+  <span style="color: #228b22;">Set</span>&lt;<span style="color: #228b22;">TreeNode</span>&gt; <span style="color: #a0522d;">visited</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">HashSet</span>&lt;&gt;();
 
-<p>
-<a href="leetcode-merge-sorted-array.html">Merge sorted array</a>
-</p>
+  searchPath.push(root);
 
-<p>
-<a href="leetcode-remove-duplicates-from-sorted-array.html">Remove duplicates from sorted array</a>
-</p>
+  <span style="color: #a020f0;">while</span> (searchPath.size() &gt; 0) {
+    <span style="color: #228b22;">TreeNode</span> <span style="color: #a0522d;">node</span> = searchPath.peek();
 
-<p>
-<a href="findAllNumbersDisappearedInAnArray.html">Find all numbers disappeared in an array</a>
-</p>
+    <span style="color: #a020f0;">if</span> (node.left != <span style="color: #008b8b;">null</span> &amp;&amp; !visited.contains(node.left)) {
+      searchPath.push(node.left);
+      <span style="color: #a020f0;">continue</span>;
+    }
 
-<p>
-<a href="linkedListCycleII.html">Linked list cycle II</a>
-</p>
+    <span style="color: #a020f0;">if</span> (!visited.contains(node)) {
+      preOrder.add(node.val);
+      visited.add(node);
+    }
 
-<p>
-<a href="reverseLinkedList.html">Reverse linked list</a>
-</p>
+    <span style="color: #a020f0;">if</span> (node.right != <span style="color: #008b8b;">null</span> &amp;&amp; !visited.contains(node.right)) {
+      searchPath.push(node.right);
+      <span style="color: #a020f0;">continue</span>;
+    }
 
-<p>
-<a href="leetcode-copy-list-with-random-pointer.html">Copy list with random pointer</a>
-</p>
+    searchPath.pop();
+  }
 
-<p>
-<a href="leetcode-dfs-traversals.html">Depth first search traversals</a>
-</p>
-</div>
-</div>
+  <span style="color: #a020f0;">return</span> preOrder;
+}
+</pre>
 </div>
 
-<div id="outline-container-orga97048b" class="outline-2">
-<h2 id="orga97048b">Python</h2>
-<div class="outline-text-2" id="text-orga97048b">
-</div>
-<div id="outline-container-orgcd48b20" class="outline-3">
-<h3 id="orgcd48b20">Elements of programming interviews</h3>
-<div class="outline-text-3" id="text-orgcd48b20">
 <p>
-<a href="find-kth-largest-element.html">Find kth largest element</a>
+The post-order traversal adds the node to the output list after processing the left and the right sub-tree.
 </p>
 
-<p>
-<a href="nearest_repeated_entries.html">Nearest repeated entries</a>
-</p>
-</div>
-</div>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #0000ff;">preorderTraversal</span>(<span style="color: #228b22;">TreeNode</span> <span style="color: #a0522d;">root</span>) {
+  <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">preOrder</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">LinkedList</span>&lt;&gt;();
+  <span style="color: #a020f0;">if</span> (root == <span style="color: #008b8b;">null</span>) {
+    <span style="color: #a020f0;">return</span> preOrder;
+  }
 
-<div id="outline-container-org3f2c5ec" class="outline-3">
-<h3 id="org3f2c5ec">HackerRank</h3>
-<div class="outline-text-3" id="text-org3f2c5ec">
-<p>
-<a href="roads-and-libraries.html">Roads and libraries</a>
-</p>
+  <span style="color: #228b22;">Deque</span>&lt;<span style="color: #228b22;">TreeNode</span>&gt; <span style="color: #a0522d;">searchPath</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ArrayDeque</span>&lt;&gt;();
+  <span style="color: #228b22;">Set</span>&lt;<span style="color: #228b22;">TreeNode</span>&gt; <span style="color: #a0522d;">visited</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">HashSet</span>&lt;&gt;();
 
-<p>
-<a href="find-nearest-clone.html">Find nearest clone</a>
-</p>
+  searchPath.push(root);
 
-<p>
-<a href="q-with-two-stacks.html">Queue with two stacks</a>
-</p>
+  <span style="color: #a020f0;">while</span> (searchPath.size() &gt; 0) {
+    <span style="color: #228b22;">TreeNode</span> <span style="color: #a0522d;">node</span> = searchPath.peek();
 
-<p>
-<a href="nearest_absolute_difference.html">Nearest absolute difference</a>
-</p>
-</div>
-</div>
+    <span style="color: #a020f0;">if</span> (node.left != <span style="color: #008b8b;">null</span> &amp;&amp; !visited.contains(node.left)) {
+      searchPath.push(node.left);
+      <span style="color: #a020f0;">continue</span>;
+    }
+
+    <span style="color: #a020f0;">if</span> (node.right != <span style="color: #008b8b;">null</span> &amp;&amp; !visited.contains(node.right)) {
+      searchPath.push(node.right);
+      <span style="color: #a020f0;">continue</span>;
+    }
+
+    <span style="color: #a020f0;">if</span> (!visited.contains(node)) {
+      preOrder.add(node.val);
+      visited.add(node);
+    }
+
+    searchPath.pop();
+  }
+
+  <span style="color: #a020f0;">return</span> preOrder;
+}
+</pre>
 </div>
 </div>
 </body>
