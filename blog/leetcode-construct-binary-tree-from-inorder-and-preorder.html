@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>mwpb blog</title>
+<title>Reconstruct binary tree from in-order and pre-order</title>
 <meta name="generator" content="Org mode">
 <meta name="author" content="mwpb">
 <meta name="description" content="Personal webpage of Matthew Burke a mathematician and software developer"
@@ -229,181 +229,65 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">mwpb blog
-<br>
-<span class="subtitle">My home page is <a href="../index.html">here</a>.</span>
-</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org13ce3b8">Mathematics</a></li>
-<li><a href="#org76970ef">Teaching</a></li>
-<li><a href="#org5137910">General coding</a></li>
-<li><a href="#org66ef551">Java</a>
-<ul>
-<li><a href="#org51b3cd2">Excercism</a></li>
-<li><a href="#orgdb7d4a0">LeetCode</a></li>
-</ul>
-</li>
-<li><a href="#orga97048b">Python</a>
-<ul>
-<li><a href="#orgcd48b20">Elements of programming interviews</a></li>
-<li><a href="#org3f2c5ec">HackerRank</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org13ce3b8" class="outline-2">
-<h2 id="org13ce3b8">Mathematics</h2>
-<div class="outline-text-2" id="text-org13ce3b8">
+<h1 class="title">Reconstruct binary tree from in-order and pre-order</h1>
 <p>
-<a href="inscribed.html">Minimum inscribed triangle</a>
+<a href="./index.html">Back to index</a>
 </p>
 
 <p>
-<a href="inverse-function-theorem.html">The inverse function theorem</a>
+The problem statement:
 </p>
+
+<blockquote>
+<p>
+Given two integer arrays representing the in-order and pre-order traversals of a binary tree, reconstruct the binary tree.
+</p>
+</blockquote>
 
 <p>
-<a href="open-mapping-theorem.html">Open mapping theorem</a>
-</p>
-</div>
-</div>
-
-<div id="outline-container-org76970ef" class="outline-2">
-<h2 id="org76970ef">Teaching</h2>
-<div class="outline-text-2" id="text-org76970ef">
-<p>
-<a href="introEigenvectors.html">Eigenvectors without determinants: introduction</a>
+This problem seems easier using recursion.
+The idea is that the pre-order can tell us what the root is and the in-order what its left and right children are.
+A first attempt might iterate through the in-order traversal and find the root from the pre-order traversal.
+However we can use a shortcut.
+The pre-order traversal places the root first, then the left sub-tree and then the right sub-tree.
+Therefore if we construct the left sub-tree first we don't need to use a loop to find the root.
+It will simply be the earliest element of the pre-order traversal that we have not used.
 </p>
 
-<p>
-<a href="distinctEigenvalues.html">Eigenvectors without determinants: distinct eigenvalues</a>
-</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Solution</span> {
+  <span style="color: #228b22;">Map</span>&lt;<span style="color: #228b22;">Integer</span>, <span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">inorderIndex</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">HashMap</span>&lt;&gt;();
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">preorderPointer</span>;
+  <span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">preorder</span>;
 
-<p>
-<a href="complexEigenvalues.html">Eigenvectors without determinants: complex eigenvalues</a>
-</p>
-</div>
-</div>
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">TreeNode</span> <span style="color: #0000ff;">buildTree</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">preorder</span>, <span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">inorder</span>) {
+    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; inorder.<span style="color: #228b22;">length</span>; i++) {
+      <span style="color: #a020f0;">this</span>.inorderIndex.put(inorder[i], i);
+    }
 
-<div id="outline-container-org5137910" class="outline-2">
-<h2 id="org5137910">General coding</h2>
-<div class="outline-text-2" id="text-org5137910">
-<p>
-<a href="sameSiteCookies.html">Same site cookie subtlety</a>
-</p>
+    <span style="color: #a020f0;">this</span>.preorderPointer = 0;
+    <span style="color: #a020f0;">this</span>.preorder = preorder;
 
-<p>
-<a href="object_oriented_programming.html">Object oriented programming</a>
-</p>
-</div>
-</div>
+    <span style="color: #a020f0;">return</span> <span style="color: #a020f0;">this</span>.buildTreeInner(0, preorder.length - 1);
+  }
 
-<div id="outline-container-org66ef551" class="outline-2">
-<h2 id="org66ef551">Java</h2>
-<div class="outline-text-2" id="text-org66ef551">
-</div>
-<div id="outline-container-org51b3cd2" class="outline-3">
-<h3 id="org51b3cd2">Excercism</h3>
-<div class="outline-text-3" id="text-org51b3cd2">
-<p>
-<a href="hierholzer.html">Hierholzer</a> 
-</p>
-</div>
-</div>
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">TreeNode</span> <span style="color: #0000ff;">buildTreeInner</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">leftPointer</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">rightPointer</span>) {
+    <span style="color: #a020f0;">if</span> (leftPointer &gt; rightPointer) {
+      <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">null</span>;
+    }
 
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">rootVal</span> = <span style="color: #a020f0;">this</span>.preorder[<span style="color: #a020f0;">this</span>.preorderPointer];
+    <span style="color: #228b22;">TreeNode</span> <span style="color: #a0522d;">root</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TreeNode</span>(rootVal);
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">rootIndex</span> = <span style="color: #a020f0;">this</span>.inorderIndex.get(rootVal);
 
-<div id="outline-container-orgdb7d4a0" class="outline-3">
-<h3 id="orgdb7d4a0">LeetCode</h3>
-<div class="outline-text-3" id="text-orgdb7d4a0">
-<p>
-<a href="leetcode-find-numbers-with-even-number-of-digits.html">Find numbers with even number of digits</a>
-</p>
+    <span style="color: #a020f0;">this</span>.preorderPointer++;
+    root.left = <span style="color: #a020f0;">this</span>.buildTreeInner(leftPointer, rootIndex - 1);
+    root.right = <span style="color: #a020f0;">this</span>.buildTreeInner(rootIndex + 1, rightPointer);
 
-<p>
-<a href="leetcode-squares-of-a-sorted-array.html">Squares of a sorted array</a>
-</p>
-
-<p>
-<a href="leetcode-duplicate-zeros.html">Duplicate zeros</a>
-</p>
-
-<p>
-<a href="leetcode-merge-sorted-array.html">Merge sorted array</a>
-</p>
-
-<p>
-<a href="leetcode-remove-duplicates-from-sorted-array.html">Remove duplicates from sorted array</a>
-</p>
-
-<p>
-<a href="findAllNumbersDisappearedInAnArray.html">Find all numbers disappeared in an array</a>
-</p>
-
-<p>
-<a href="linkedListCycleII.html">Linked list cycle II</a>
-</p>
-
-<p>
-<a href="reverseLinkedList.html">Reverse linked list</a>
-</p>
-
-<p>
-<a href="leetcode-copy-list-with-random-pointer.html">Copy list with random pointer</a>
-</p>
-
-<p>
-<a href="leetcode-dfs-traversals.html">Depth first search traversals</a>
-</p>
-
-<p>
-<a href="leetcode-construct-binary-tree-from-inorder-and-preorder.html">Reconstruct binary tree from traversals</a>
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orga97048b" class="outline-2">
-<h2 id="orga97048b">Python</h2>
-<div class="outline-text-2" id="text-orga97048b">
-</div>
-<div id="outline-container-orgcd48b20" class="outline-3">
-<h3 id="orgcd48b20">Elements of programming interviews</h3>
-<div class="outline-text-3" id="text-orgcd48b20">
-<p>
-<a href="find-kth-largest-element.html">Find kth largest element</a>
-</p>
-
-<p>
-<a href="nearest_repeated_entries.html">Nearest repeated entries</a>
-</p>
-</div>
-</div>
-
-<div id="outline-container-org3f2c5ec" class="outline-3">
-<h3 id="org3f2c5ec">HackerRank</h3>
-<div class="outline-text-3" id="text-org3f2c5ec">
-<p>
-<a href="roads-and-libraries.html">Roads and libraries</a>
-</p>
-
-<p>
-<a href="find-nearest-clone.html">Find nearest clone</a>
-</p>
-
-<p>
-<a href="q-with-two-stacks.html">Queue with two stacks</a>
-</p>
-
-<p>
-<a href="nearest_absolute_difference.html">Nearest absolute difference</a>
-</p>
-</div>
-</div>
+    <span style="color: #a020f0;">return</span> root;
+  }
+}
+</pre>
 </div>
 </div>
 </body>
