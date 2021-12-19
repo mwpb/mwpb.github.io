@@ -255,29 +255,29 @@ Since we know that `nums1` has `n` zero entries at the end we can place the larg
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Solution</span> {
-  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">merge</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">nums1</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">m</span>, <span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">nums2</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">p1</span> = m - 1;
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">p2</span> = n - 1;
-    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = m + n - 1; i &gt;= 0; i--) {
-      <span style="color: #a020f0;">if</span> (p1 &lt; 0) {
+<pre class="src src-java"><span style="color: #E06C75;">class</span> <span style="color: #61AFEF;">Solution</span> {
+  <span style="color: #E06C75;">public</span> <span style="color: #61AFEF;">void</span> <span style="color: #61AFEF;">merge</span>(<span style="color: #61AFEF;">int</span>[] <span style="color: #E5C07B;">nums1</span>, <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">m</span>, <span style="color: #61AFEF;">int</span>[] <span style="color: #E5C07B;">nums2</span>, <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">n</span>) {
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">p1</span> = m - 1;
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">p2</span> = n - 1;
+    <span style="color: #E06C75;">for</span> (<span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">i</span> = m + n - 1; i &gt;= 0; i--) {
+      <span style="color: #E06C75;">if</span> (p1 &lt; 0) {
         nums1[i] = nums2[p2];
         p2--;
-        <span style="color: #a020f0;">continue</span>;
+        <span style="color: #E06C75;">continue</span>;
       }
-      <span style="color: #a020f0;">if</span> (p2 &lt; 0) {
+      <span style="color: #E06C75;">if</span> (p2 &lt; 0) {
         nums1[i] = nums1[p1];
         p1--;
-        <span style="color: #a020f0;">continue</span>;
+        <span style="color: #E06C75;">continue</span>;
       }
 
-      <span style="color: #228b22;">int</span> <span style="color: #a0522d;">greatest1</span> = nums1[p1];
-      <span style="color: #228b22;">int</span> <span style="color: #a0522d;">greatest2</span> = nums2[p2];
-      <span style="color: #a020f0;">if</span> (greatest1 &lt; <span style="color: #228b22;">greatest2</span>) {
+      <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">greatest1</span> = nums1[p1];
+      <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">greatest2</span> = nums2[p2];
+      <span style="color: #E06C75;">if</span> (greatest1 &lt; <span style="color: #61AFEF;">greatest2</span>) {
         nums1[i] = nums2[p2];
         p2--;
-        <span style="color: #a020f0;">continue</span>;
-      } <span style="color: #a020f0;">else</span> {
+        <span style="color: #E06C75;">continue</span>;
+      } <span style="color: #E06C75;">else</span> {
         nums1[i] = nums1[p1];
         p1--;
       }

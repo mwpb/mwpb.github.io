@@ -271,19 +271,19 @@ Then I tried a BFS with <b>an inappropriate Python queue library</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">bfs_wrong_queue</span>(start, adj_list, visited): <span style="color: #b22222;"># </span><span style="color: #b22222;">O(??)</span>
-    <span style="color: #a0522d;">q</span> = queue.Queue()
+<pre class="src src-python"><span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">bfs_wrong_queue</span>(start, adj_list, visited): <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">O(??)</span>
+    <span style="color: #E5C07B;">q</span> = queue.Queue()
     q.put(start)
-    <span style="color: #a0522d;">out</span> = [start]
+    <span style="color: #E5C07B;">out</span> = [start]
     visited.add(start)
-    <span style="color: #a020f0;">while</span> q.qsize():
-        <span style="color: #a0522d;">node</span> = q.get()
-        <span style="color: #a020f0;">for</span> x <span style="color: #a020f0;">in</span> adj_list[node]:
-            <span style="color: #a020f0;">if</span> x <span style="color: #a020f0;">not</span> <span style="color: #a020f0;">in</span> visited:
+    <span style="color: #E06C75;">while</span> q.qsize():
+        <span style="color: #E5C07B;">node</span> = q.get()
+        <span style="color: #E06C75;">for</span> x <span style="color: #E06C75;">in</span> adj_list[node]:
+            <span style="color: #E06C75;">if</span> x <span style="color: #E06C75;">not</span> <span style="color: #E06C75;">in</span> visited:
                 q.put(x)
                 visited.add(x)
                 out.append(x)
-    <span style="color: #a020f0;">return</span> out, visited
+    <span style="color: #E06C75;">return</span> out, visited
 </pre>
 </div>
 
@@ -293,21 +293,21 @@ With this mistake a single Hackerrank test case gave me a: `Terminated due to ti
 Next using the usual Python list as a stack I implemented a DFS which passed all of the Hackerrank test cases.
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">dfs</span>(start, adj_list, visited): <span style="color: #b22222;"># </span><span style="color: #b22222;">O(v+e)</span>
-    <span style="color: #a0522d;">search_path</span> = [start]
+<pre class="src src-python"><span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">dfs</span>(start, adj_list, visited): <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">O(v+e)</span>
+    <span style="color: #E5C07B;">search_path</span> = [start]
     visited.add(start)
-    <span style="color: #a0522d;">out</span> = [start]
-    <span style="color: #a020f0;">while</span> search_path:
-        <span style="color: #a0522d;">node</span> = search_path[-1]
-        <span style="color: #a020f0;">if</span> <span style="color: #a020f0;">not</span> adj_list[node]:
+    <span style="color: #E5C07B;">out</span> = [start]
+    <span style="color: #E06C75;">while</span> search_path:
+        <span style="color: #E5C07B;">node</span> = search_path[-1]
+        <span style="color: #E06C75;">if</span> <span style="color: #E06C75;">not</span> adj_list[node]:
             search_path.pop()
-        <span style="color: #a020f0;">else</span>:
-            <span style="color: #a0522d;">next_node</span> = adj_list[node].pop()
-            <span style="color: #a020f0;">if</span> next_node <span style="color: #a020f0;">not</span> <span style="color: #a020f0;">in</span> visited:
+        <span style="color: #E06C75;">else</span>:
+            <span style="color: #E5C07B;">next_node</span> = adj_list[node].pop()
+            <span style="color: #E06C75;">if</span> next_node <span style="color: #E06C75;">not</span> <span style="color: #E06C75;">in</span> visited:
                 visited.add(next_node)
                 search_path.append(next_node)
                 out.append(next_node)
-    <span style="color: #a020f0;">return</span> out, visited
+    <span style="color: #E06C75;">return</span> out, visited
 </pre>
 </div>
 <p>
@@ -317,93 +317,93 @@ This was complicated by the fact that people seem to prefer DFS when visiting ev
 When I realised my mistake and used the appropriate queue library my BFS solution passed the Hackerrank test cases also:
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">bfs</span>(start, adj_list, visited): <span style="color: #b22222;"># </span><span style="color: #b22222;">O(v+e)</span>
-    <span style="color: #a0522d;">q</span> = deque()
+<pre class="src src-python"><span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">bfs</span>(start, adj_list, visited): <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">O(v+e)</span>
+    <span style="color: #E5C07B;">q</span> = deque()
     q.append(start)
-    <span style="color: #a0522d;">out</span> = [start]
+    <span style="color: #E5C07B;">out</span> = [start]
     visited.add(start)
-    <span style="color: #a020f0;">while</span> <span style="color: #483d8b;">len</span>(q):
-        <span style="color: #a0522d;">node</span> = q.popleft()
-        <span style="color: #a020f0;">for</span> x <span style="color: #a020f0;">in</span> adj_list[node]:
-            <span style="color: #a020f0;">if</span> x <span style="color: #a020f0;">not</span> <span style="color: #a020f0;">in</span> visited:
+    <span style="color: #E06C75;">while</span> <span style="color: #828997;">len</span>(q):
+        <span style="color: #E5C07B;">node</span> = q.popleft()
+        <span style="color: #E06C75;">for</span> x <span style="color: #E06C75;">in</span> adj_list[node]:
+            <span style="color: #E06C75;">if</span> x <span style="color: #E06C75;">not</span> <span style="color: #E06C75;">in</span> visited:
                 q.append(x)
                 visited.add(x)
                 out.append(x)
-    <span style="color: #a020f0;">return</span> out, visited
+    <span style="color: #E06C75;">return</span> out, visited
 </pre>
 </div>
 <p>
 The complete solution is displayed below:
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">import</span> queue
-<span style="color: #a020f0;">from</span> collections <span style="color: #a020f0;">import</span> deque
+<pre class="src src-python"><span style="color: #E06C75;">import</span> queue
+<span style="color: #E06C75;">from</span> collections <span style="color: #E06C75;">import</span> deque
 
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">get_adj_list</span>(nodes, edges): <span style="color: #b22222;"># </span><span style="color: #b22222;">O(v+e)</span>
-    <span style="color: #a0522d;">out</span> = [[] <span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> nodes]
-    <span style="color: #a020f0;">for</span> edge <span style="color: #a020f0;">in</span> edges:
-        <span style="color: #a0522d;">a</span>, <span style="color: #a0522d;">b</span> = edge
+<span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">get_adj_list</span>(nodes, edges): <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">O(v+e)</span>
+    <span style="color: #E5C07B;">out</span> = [[] <span style="color: #E06C75;">for</span> i <span style="color: #E06C75;">in</span> nodes]
+    <span style="color: #E06C75;">for</span> edge <span style="color: #E06C75;">in</span> edges:
+        <span style="color: #E5C07B;">a</span>, <span style="color: #E5C07B;">b</span> = edge
         out[a-1].append(b-1)
         out[b-1].append(a-1)
-    <span style="color: #a020f0;">return</span> out
+    <span style="color: #E06C75;">return</span> out
 
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">bfs</span>(start, adj_list, visited): <span style="color: #b22222;"># </span><span style="color: #b22222;">O(v+e)</span>
-    <span style="color: #a0522d;">q</span> = deque()
+<span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">bfs</span>(start, adj_list, visited): <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">O(v+e)</span>
+    <span style="color: #E5C07B;">q</span> = deque()
     q.append(start)
-    <span style="color: #a0522d;">out</span> = [start]
+    <span style="color: #E5C07B;">out</span> = [start]
     visited.add(start)
-    <span style="color: #a020f0;">while</span> <span style="color: #483d8b;">len</span>(q):
-        <span style="color: #a0522d;">node</span> = q.popleft()
-        <span style="color: #a020f0;">for</span> x <span style="color: #a020f0;">in</span> adj_list[node]:
-            <span style="color: #a020f0;">if</span> x <span style="color: #a020f0;">not</span> <span style="color: #a020f0;">in</span> visited:
+    <span style="color: #E06C75;">while</span> <span style="color: #828997;">len</span>(q):
+        <span style="color: #E5C07B;">node</span> = q.popleft()
+        <span style="color: #E06C75;">for</span> x <span style="color: #E06C75;">in</span> adj_list[node]:
+            <span style="color: #E06C75;">if</span> x <span style="color: #E06C75;">not</span> <span style="color: #E06C75;">in</span> visited:
                 q.append(x)
                 visited.add(x)
                 out.append(x)
-    <span style="color: #a020f0;">return</span> out, visited
+    <span style="color: #E06C75;">return</span> out, visited
 
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">bfs_wrong_queue</span>(start, adj_list, visited): <span style="color: #b22222;"># </span><span style="color: #b22222;">O(??)</span>
-    <span style="color: #a0522d;">q</span> = queue.Queue()
+<span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">bfs_wrong_queue</span>(start, adj_list, visited): <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">O(??)</span>
+    <span style="color: #E5C07B;">q</span> = queue.Queue()
     q.put(start)
-    <span style="color: #a0522d;">out</span> = [start]
+    <span style="color: #E5C07B;">out</span> = [start]
     visited.add(start)
-    <span style="color: #a020f0;">while</span> q.qsize():
-        <span style="color: #a0522d;">node</span> = q.get()
-        <span style="color: #a020f0;">for</span> x <span style="color: #a020f0;">in</span> adj_list[node]:
-            <span style="color: #a020f0;">if</span> x <span style="color: #a020f0;">not</span> <span style="color: #a020f0;">in</span> visited:
+    <span style="color: #E06C75;">while</span> q.qsize():
+        <span style="color: #E5C07B;">node</span> = q.get()
+        <span style="color: #E06C75;">for</span> x <span style="color: #E06C75;">in</span> adj_list[node]:
+            <span style="color: #E06C75;">if</span> x <span style="color: #E06C75;">not</span> <span style="color: #E06C75;">in</span> visited:
                 q.put(x)
                 visited.add(x)
                 out.append(x)
-    <span style="color: #a020f0;">return</span> out, visited
+    <span style="color: #E06C75;">return</span> out, visited
 
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">dfs</span>(start, adj_list, visited): <span style="color: #b22222;"># </span><span style="color: #b22222;">O(v+e)</span>
-    <span style="color: #a0522d;">search_path</span> = [start]
+<span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">dfs</span>(start, adj_list, visited): <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">O(v+e)</span>
+    <span style="color: #E5C07B;">search_path</span> = [start]
     visited.add(start)
-    <span style="color: #a0522d;">out</span> = [start]
-    <span style="color: #a020f0;">while</span> search_path:
-        <span style="color: #a0522d;">node</span> = search_path[-1]
-        <span style="color: #a020f0;">if</span> <span style="color: #a020f0;">not</span> adj_list[node]:
+    <span style="color: #E5C07B;">out</span> = [start]
+    <span style="color: #E06C75;">while</span> search_path:
+        <span style="color: #E5C07B;">node</span> = search_path[-1]
+        <span style="color: #E06C75;">if</span> <span style="color: #E06C75;">not</span> adj_list[node]:
             search_path.pop()
-        <span style="color: #a020f0;">else</span>:
-            <span style="color: #a0522d;">next_node</span> = adj_list[node].pop()
-            <span style="color: #a020f0;">if</span> next_node <span style="color: #a020f0;">not</span> <span style="color: #a020f0;">in</span> visited:
+        <span style="color: #E06C75;">else</span>:
+            <span style="color: #E5C07B;">next_node</span> = adj_list[node].pop()
+            <span style="color: #E06C75;">if</span> next_node <span style="color: #E06C75;">not</span> <span style="color: #E06C75;">in</span> visited:
                 visited.add(next_node)
                 search_path.append(next_node)
                 out.append(next_node)
-    <span style="color: #a020f0;">return</span> out, visited
+    <span style="color: #E06C75;">return</span> out, visited
 
 
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">roadsAndLibraries</span>(n, c_lib, c_road, cities): <span style="color: #b22222;"># </span><span style="color: #b22222;">O(v*(v+e))</span>
-    <span style="color: #a020f0;">if</span> c_lib &lt;= c_road:
-        <span style="color: #a020f0;">return</span> n*c_lib
-    <span style="color: #a0522d;">adj_list</span> = get_adj_list(<span style="color: #483d8b;">list</span>(<span style="color: #483d8b;">range</span>(n)), cities)
-    <span style="color: #a0522d;">nodes</span> = <span style="color: #483d8b;">list</span>(<span style="color: #483d8b;">range</span>(n))
-    <span style="color: #a0522d;">cost</span> = 0
-    <span style="color: #a0522d;">visited</span> = <span style="color: #483d8b;">set</span>([])
-    <span style="color: #a020f0;">for</span> start <span style="color: #a020f0;">in</span> nodes:
-        <span style="color: #a020f0;">if</span> start <span style="color: #a020f0;">not</span> <span style="color: #a020f0;">in</span> visited: <span style="color: #b22222;"># </span><span style="color: #b22222;">repeated for every connected component</span>
-            <span style="color: #a0522d;">comp</span>, <span style="color: #a0522d;">visited</span> = bfs(start, adj_list, visited)
-            <span style="color: #a0522d;">cost</span> += c_lib + (<span style="color: #483d8b;">len</span>(comp)-1)*c_road
-    <span style="color: #a020f0;">return</span> cost
+<span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">roadsAndLibraries</span>(n, c_lib, c_road, cities): <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">O(v*(v+e))</span>
+    <span style="color: #E06C75;">if</span> c_lib &lt;= c_road:
+        <span style="color: #E06C75;">return</span> n*c_lib
+    <span style="color: #E5C07B;">adj_list</span> = get_adj_list(<span style="color: #828997;">list</span>(<span style="color: #828997;">range</span>(n)), cities)
+    <span style="color: #E5C07B;">nodes</span> = <span style="color: #828997;">list</span>(<span style="color: #828997;">range</span>(n))
+    <span style="color: #E5C07B;">cost</span> = 0
+    <span style="color: #E5C07B;">visited</span> = <span style="color: #828997;">set</span>([])
+    <span style="color: #E06C75;">for</span> start <span style="color: #E06C75;">in</span> nodes:
+        <span style="color: #E06C75;">if</span> start <span style="color: #E06C75;">not</span> <span style="color: #E06C75;">in</span> visited: <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">repeated for every connected component</span>
+            <span style="color: #E5C07B;">comp</span>, <span style="color: #E5C07B;">visited</span> = bfs(start, adj_list, visited)
+            <span style="color: #E5C07B;">cost</span> += c_lib + (<span style="color: #828997;">len</span>(comp)-1)*c_road
+    <span style="color: #E06C75;">return</span> cost
 </pre>
 </div>
 </div>

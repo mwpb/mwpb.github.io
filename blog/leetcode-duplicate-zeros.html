@@ -259,20 +259,20 @@ Then we will never be overwriting elements before we move them.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Solution</span> {
-  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">duplicateZeros</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">arr</span>) {
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">nZeros</span> = 0;
-    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; arr.<span style="color: #228b22;">length</span>; i++) {
-      <span style="color: #a020f0;">if</span> (arr[i] == 0) nZeros++;
+<pre class="src src-java"><span style="color: #E06C75;">class</span> <span style="color: #61AFEF;">Solution</span> {
+  <span style="color: #E06C75;">public</span> <span style="color: #61AFEF;">void</span> <span style="color: #61AFEF;">duplicateZeros</span>(<span style="color: #61AFEF;">int</span>[] <span style="color: #E5C07B;">arr</span>) {
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">nZeros</span> = 0;
+    <span style="color: #E06C75;">for</span> (<span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">i</span> = 0; i &lt; arr.<span style="color: #61AFEF;">length</span>; i++) {
+      <span style="color: #E06C75;">if</span> (arr[i] == 0) nZeros++;
     }
 
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">zerosAfter</span> = 0;
-    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = arr.length - 1; i &gt;= 0; i--) {
-      <span style="color: #a020f0;">if</span> (arr[i] == 0) zerosAfter++;
-      <span style="color: #228b22;">int</span> <span style="color: #a0522d;">zerosBefore</span> = nZeros - zerosAfter;
-      <span style="color: #228b22;">int</span> <span style="color: #a0522d;">newPosition</span> = i + zerosBefore;
-      <span style="color: #a020f0;">if</span> (newPosition &lt; arr.<span style="color: #228b22;">length</span>) arr[newPosition] = arr[i];
-      <span style="color: #a020f0;">if</span> (i != newPosition) arr[i] = 0;
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">zerosAfter</span> = 0;
+    <span style="color: #E06C75;">for</span> (<span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">i</span> = arr.length - 1; i &gt;= 0; i--) {
+      <span style="color: #E06C75;">if</span> (arr[i] == 0) zerosAfter++;
+      <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">zerosBefore</span> = nZeros - zerosAfter;
+      <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">newPosition</span> = i + zerosBefore;
+      <span style="color: #E06C75;">if</span> (newPosition &lt; arr.<span style="color: #61AFEF;">length</span>) arr[newPosition] = arr[i];
+      <span style="color: #E06C75;">if</span> (i != newPosition) arr[i] = 0;
     }
   }
 }

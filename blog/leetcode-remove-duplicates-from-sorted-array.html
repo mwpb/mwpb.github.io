@@ -251,19 +251,19 @@ To do this we simply use an integer to point at the position we are about to wri
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Solution</span> {
-  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">removeDuplicates</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">nums</span>) {
-    <span style="color: #a020f0;">if</span> (nums.length == 0) <span style="color: #a020f0;">return</span> 0;
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">current</span> = nums[0];
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">writer</span> = 1;
-    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 1; i &lt; nums.<span style="color: #228b22;">length</span>; i++) {
-      <span style="color: #a020f0;">if</span> (nums[i] != current) {
+<pre class="src src-java"><span style="color: #E06C75;">class</span> <span style="color: #61AFEF;">Solution</span> {
+  <span style="color: #E06C75;">public</span> <span style="color: #61AFEF;">int</span> <span style="color: #61AFEF;">removeDuplicates</span>(<span style="color: #61AFEF;">int</span>[] <span style="color: #E5C07B;">nums</span>) {
+    <span style="color: #E06C75;">if</span> (nums.length == 0) <span style="color: #E06C75;">return</span> 0;
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">current</span> = nums[0];
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">writer</span> = 1;
+    <span style="color: #E06C75;">for</span> (<span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">i</span> = 1; i &lt; nums.<span style="color: #61AFEF;">length</span>; i++) {
+      <span style="color: #E06C75;">if</span> (nums[i] != current) {
         nums[writer] = nums[i];
         current = nums[i];
         writer++;
       }
     }
-    <span style="color: #a020f0;">return</span> writer;
+    <span style="color: #E06C75;">return</span> writer;
   }
 }
 </pre>

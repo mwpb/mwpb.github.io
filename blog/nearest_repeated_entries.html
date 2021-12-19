@@ -256,14 +256,14 @@ A brute-force approach might be to find &#x2013; for each element of the array &
 So a carefree solution might be the following:
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">bf_nearest_repeat</span>(l): <span style="color: #b22222;"># </span><span style="color: #b22222;">O(n^2)</span>
-    <span style="color: #a0522d;">gap</span> = <span style="color: #483d8b;">len</span>(l)
-    <span style="color: #a020f0;">for</span> j <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(<span style="color: #483d8b;">len</span>(l)):
-        <span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(j + 1, <span style="color: #483d8b;">min</span>(<span style="color: #483d8b;">len</span>(l), j + gap)):
-            <span style="color: #a020f0;">if</span> (l[j] == l[i]) <span style="color: #a020f0;">and</span> (i - j &lt; gap):
-                <span style="color: #a0522d;">gap</span> = i - j
-            <span style="color: #a020f0;">break</span>
-    <span style="color: #a020f0;">return</span> gap
+<pre class="src src-python"><span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">bf_nearest_repeat</span>(l): <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">O(n^2)</span>
+    <span style="color: #E5C07B;">gap</span> = <span style="color: #828997;">len</span>(l)
+    <span style="color: #E06C75;">for</span> j <span style="color: #E06C75;">in</span> <span style="color: #828997;">range</span>(<span style="color: #828997;">len</span>(l)):
+        <span style="color: #E06C75;">for</span> i <span style="color: #E06C75;">in</span> <span style="color: #828997;">range</span>(j + 1, <span style="color: #828997;">min</span>(<span style="color: #828997;">len</span>(l), j + gap)):
+            <span style="color: #E06C75;">if</span> (l[j] == l[i]) <span style="color: #E06C75;">and</span> (i - j &lt; gap):
+                <span style="color: #E5C07B;">gap</span> = i - j
+            <span style="color: #E06C75;">break</span>
+    <span style="color: #E06C75;">return</span> gap
 </pre>
 </div>
 <p>
@@ -277,14 +277,14 @@ We don't have to iterate through the array for each element but only keep track 
 This could look like:
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">nearest_repeat</span>(l): <span style="color: #b22222;"># </span><span style="color: #b22222;">O(n)</span>
-    <span style="color: #a0522d;">last_occurrence</span> = {}
-    <span style="color: #a0522d;">gap</span> = <span style="color: #483d8b;">float</span>(<span style="color: #8b2252;">'inf'</span>)
-    <span style="color: #a020f0;">for</span> i, ele <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">enumerate</span>(l):
-        <span style="color: #a020f0;">if</span> ele <span style="color: #a020f0;">in</span> last_occurrence <span style="color: #a020f0;">and</span> gap &gt; i-last_occurrence[ele]:
-            <span style="color: #a0522d;">gap</span> = i-last_occurrence[ele]
-        <span style="color: #a0522d;">last_occurrence</span>[ele] = i
-    <span style="color: #a020f0;">return</span> gap
+<pre class="src src-python"><span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">nearest_repeat</span>(l): <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">O(n)</span>
+    <span style="color: #E5C07B;">last_occurrence</span> = {}
+    <span style="color: #E5C07B;">gap</span> = <span style="color: #828997;">float</span>(<span style="color: #98C379;">'inf'</span>)
+    <span style="color: #E06C75;">for</span> i, ele <span style="color: #E06C75;">in</span> <span style="color: #828997;">enumerate</span>(l):
+        <span style="color: #E06C75;">if</span> ele <span style="color: #E06C75;">in</span> last_occurrence <span style="color: #E06C75;">and</span> gap &gt; i-last_occurrence[ele]:
+            <span style="color: #E5C07B;">gap</span> = i-last_occurrence[ele]
+        <span style="color: #E5C07B;">last_occurrence</span>[ele] = i
+    <span style="color: #E06C75;">return</span> gap
 </pre>
 </div>
 <p>

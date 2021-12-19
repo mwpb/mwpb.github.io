@@ -253,26 +253,26 @@ So first we convert the list of dominoes to an adjacency list within a `Dominoes
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #228b22;">Map</span>&lt;<span style="color: #228b22;">Integer</span>, <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt;&gt; <span style="color: #a0522d;">adjList</span>;
-<span style="color: #228b22;">void</span> <span style="color: #0000ff;">getAdjList</span>(<span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Domino</span>&gt; <span style="color: #a0522d;">dominoes</span>) {
-  <span style="color: #228b22;">Map</span>&lt;<span style="color: #228b22;">Integer</span>, <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt;&gt; <span style="color: #a0522d;">adjList</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">HashMap</span>&lt;<span style="color: #228b22;">Integer</span>, <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt;&gt;();
-  <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">Domino</span> <span style="color: #a0522d;">domino</span>: dominoes) {
-    <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">leftList</span> = adjList.getOrDefault(
+<pre class="src src-java"><span style="color: #61AFEF;">Map</span>&lt;<span style="color: #61AFEF;">Integer</span>, <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt;&gt; <span style="color: #E5C07B;">adjList</span>;
+<span style="color: #61AFEF;">void</span> <span style="color: #61AFEF;">getAdjList</span>(<span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Domino</span>&gt; <span style="color: #E5C07B;">dominoes</span>) {
+  <span style="color: #61AFEF;">Map</span>&lt;<span style="color: #61AFEF;">Integer</span>, <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt;&gt; <span style="color: #E5C07B;">adjList</span> = <span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">HashMap</span>&lt;<span style="color: #61AFEF;">Integer</span>, <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt;&gt;();
+  <span style="color: #E06C75;">for</span> (<span style="color: #61AFEF;">Domino</span> <span style="color: #E5C07B;">domino</span>: dominoes) {
+    <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #E5C07B;">leftList</span> = adjList.getOrDefault(
       domino.getLeft(),
-      <span style="color: #a020f0;">new</span> <span style="color: #228b22;">LinkedList</span>&lt;<span style="color: #228b22;">Integer</span>&gt;()
+      <span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">LinkedList</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt;()
     );
     leftList.add(domino.getRight());
     adjList.put(domino.getLeft(), leftList);
-    <span style="color: #a020f0;">if</span> (domino.getLeft() != domino.getRight()) {
-      <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">rightList</span> = adjList.getOrDefault(
+    <span style="color: #E06C75;">if</span> (domino.getLeft() != domino.getRight()) {
+      <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #E5C07B;">rightList</span> = adjList.getOrDefault(
         domino.getRight(),
-        <span style="color: #a020f0;">new</span> <span style="color: #228b22;">LinkedList</span>&lt;<span style="color: #228b22;">Integer</span>&gt;()
+        <span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">LinkedList</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt;()
       );
       rightList.add(domino.getLeft());
       adjList.put(domino.getRight(), rightList);
     }
   }
-  <span style="color: #a020f0;">this</span>.adjList = adjList;
+  <span style="color: #E06C75;">this</span>.adjList = adjList;
 }
 </pre>
 </div>
@@ -282,12 +282,12 @@ To check if it is possible to find a chain we use Euler's criteria:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #228b22;">void</span> <span style="color: #0000ff;">existsEulerCycle</span>() <span style="color: #a020f0;">throws</span> <span style="color: #228b22;">ChainNotFoundException</span> {
-  <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #0000ff;">v</span>: <span style="color: #a020f0;">this</span>.adjList.keySet()) {
-    <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">noLoop</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">LinkedList</span>&lt;<span style="color: #228b22;">Integer</span>&gt;(<span style="color: #a020f0;">this</span>.adjList.get(v));
+<pre class="src src-java"><span style="color: #61AFEF;">void</span> <span style="color: #61AFEF;">existsEulerCycle</span>() <span style="color: #E06C75;">throws</span> <span style="color: #61AFEF;">ChainNotFoundException</span> {
+  <span style="color: #E06C75;">for</span> (<span style="color: #61AFEF;">int</span> <span style="color: #61AFEF;">v</span>: <span style="color: #E06C75;">this</span>.adjList.keySet()) {
+    <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #E5C07B;">noLoop</span> = <span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">LinkedList</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt;(<span style="color: #E06C75;">this</span>.adjList.get(v));
     noLoop.removeAll(Collections.singleton(v));
-    <span style="color: #a020f0;">if</span> (noLoop.size() % 2 != 0) {
-      <span style="color: #a020f0;">throw</span> <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ChainNotFoundException</span>(<span style="color: #8b2252;">"No domino chain found."</span>);
+    <span style="color: #E06C75;">if</span> (noLoop.size() % 2 != 0) {
+      <span style="color: #E06C75;">throw</span> <span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">ChainNotFoundException</span>(<span style="color: #98C379;">"No domino chain found."</span>);
     }
   }
 }
@@ -300,21 +300,21 @@ So first we need a method that finds any cycle starting at a vertex:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #228b22;">Map</span>&lt;<span style="color: #228b22;">Integer</span>, <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt;&gt; <span style="color: #a0522d;">adjList</span>;
-<span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #0000ff;">getCycle</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">start</span>) {
-  <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">cycle</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">LinkedList</span>&lt;<span style="color: #228b22;">Integer</span>&gt;();
+<pre class="src src-java"><span style="color: #61AFEF;">Map</span>&lt;<span style="color: #61AFEF;">Integer</span>, <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt;&gt; <span style="color: #E5C07B;">adjList</span>;
+<span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #61AFEF;">getCycle</span>(<span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">start</span>) {
+  <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #E5C07B;">cycle</span> = <span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">LinkedList</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt;();
   cycle.add(start);
-  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">second</span> = <span style="color: #a020f0;">this</span>.adjList.get(start).get(0);
-  <span style="color: #a020f0;">this</span>.removeEdge(start, second);
+  <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">second</span> = <span style="color: #E06C75;">this</span>.adjList.get(start).get(0);
+  <span style="color: #E06C75;">this</span>.removeEdge(start, second);
   cycle.add(second);
-  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">current</span> = second;
-  <span style="color: #a020f0;">while</span> (current != start) {
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">next</span> = <span style="color: #a020f0;">this</span>.adjList.get(current).get(0);
-    <span style="color: #a020f0;">this</span>.removeEdge(current, next);
+  <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">current</span> = second;
+  <span style="color: #E06C75;">while</span> (current != start) {
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">next</span> = <span style="color: #E06C75;">this</span>.adjList.get(current).get(0);
+    <span style="color: #E06C75;">this</span>.removeEdge(current, next);
     cycle.add(next);
     current = next;
   }
-  <span style="color: #a020f0;">return</span> cycle;
+  <span style="color: #E06C75;">return</span> cycle;
 }
 </pre>
 </div>
@@ -326,18 +326,18 @@ For each of these we use `getCycle` to get a new cycle starting <b>and ending</b
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">addCycle</span>() {
-  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = findFirstNonZeroValence();
-  <span style="color: #a020f0;">if</span> (i &lt; 0) {
-    <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">false</span>;
+<pre class="src src-java"><span style="color: #61AFEF;">boolean</span> <span style="color: #61AFEF;">addCycle</span>() {
+  <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">i</span> = findFirstNonZeroValence();
+  <span style="color: #E06C75;">if</span> (i &lt; 0) {
+    <span style="color: #E06C75;">return</span> <span style="color: #98C379;">false</span>;
   }
-  <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">newCycle</span> = <span style="color: #a020f0;">this</span>.getCycle(i);
+  <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #E5C07B;">newCycle</span> = <span style="color: #E06C75;">this</span>.getCycle(i);
   newCycle.remove(newCycle.size() - 1);
-  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">j</span> = <span style="color: #a020f0;">this</span>.cycle.indexOf(<span style="color: #a020f0;">new</span> <span style="color: #228b22;">Integer</span>(i));
-  <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>: newCycle) {
-    <span style="color: #a020f0;">this</span>.cycle.add(j+1, n);
+  <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">j</span> = <span style="color: #E06C75;">this</span>.cycle.indexOf(<span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">Integer</span>(i));
+  <span style="color: #E06C75;">for</span> (<span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">n</span>: newCycle) {
+    <span style="color: #E06C75;">this</span>.cycle.add(j+1, n);
   }
-  <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">true</span>;
+  <span style="color: #E06C75;">return</span> <span style="color: #98C379;">true</span>;
 }
 </pre>
 </div>
@@ -348,123 +348,123 @@ The whole Java class is as follows and it passes all the tests on the `Exercism`
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #a020f0;">import</span> <span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">util</span>.*;
+<pre class="src src-java"><span style="color: #E06C75;">import</span> <span style="color: #98C379;">java</span>.<span style="color: #98C379;">util</span>.*;
 
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Dominoes</span> {
+<span style="color: #E06C75;">class</span> <span style="color: #61AFEF;">Dominoes</span> {
 
-  <span style="color: #228b22;">Map</span>&lt;<span style="color: #228b22;">Integer</span>, <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt;&gt; <span style="color: #a0522d;">adjList</span>;
-  <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">cycle</span>;
+  <span style="color: #61AFEF;">Map</span>&lt;<span style="color: #61AFEF;">Integer</span>, <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt;&gt; <span style="color: #E5C07B;">adjList</span>;
+  <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #E5C07B;">cycle</span>;
 
-  <span style="color: #228b22;">void</span> <span style="color: #0000ff;">getAdjList</span>(<span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Domino</span>&gt; <span style="color: #a0522d;">dominoes</span>) {
-    <span style="color: #228b22;">Map</span>&lt;<span style="color: #228b22;">Integer</span>, <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt;&gt; <span style="color: #a0522d;">adjList</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">HashMap</span>&lt;<span style="color: #228b22;">Integer</span>, <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt;&gt;();
-    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">Domino</span> <span style="color: #a0522d;">domino</span>: dominoes) {
-      <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">leftList</span> = adjList.getOrDefault(
+  <span style="color: #61AFEF;">void</span> <span style="color: #61AFEF;">getAdjList</span>(<span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Domino</span>&gt; <span style="color: #E5C07B;">dominoes</span>) {
+    <span style="color: #61AFEF;">Map</span>&lt;<span style="color: #61AFEF;">Integer</span>, <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt;&gt; <span style="color: #E5C07B;">adjList</span> = <span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">HashMap</span>&lt;<span style="color: #61AFEF;">Integer</span>, <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt;&gt;();
+    <span style="color: #E06C75;">for</span> (<span style="color: #61AFEF;">Domino</span> <span style="color: #E5C07B;">domino</span>: dominoes) {
+      <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #E5C07B;">leftList</span> = adjList.getOrDefault(
         domino.getLeft(),
-        <span style="color: #a020f0;">new</span> <span style="color: #228b22;">LinkedList</span>&lt;<span style="color: #228b22;">Integer</span>&gt;()
+        <span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">LinkedList</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt;()
       );
       leftList.add(domino.getRight());
       adjList.put(domino.getLeft(), leftList);
-      <span style="color: #a020f0;">if</span> (domino.getLeft() != domino.getRight()) {
-        <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">rightList</span> = adjList.getOrDefault(
+      <span style="color: #E06C75;">if</span> (domino.getLeft() != domino.getRight()) {
+        <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #E5C07B;">rightList</span> = adjList.getOrDefault(
           domino.getRight(),
-          <span style="color: #a020f0;">new</span> <span style="color: #228b22;">LinkedList</span>&lt;<span style="color: #228b22;">Integer</span>&gt;()
+          <span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">LinkedList</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt;()
         );
         rightList.add(domino.getLeft());
         adjList.put(domino.getRight(), rightList);
       }
     }
-    <span style="color: #a020f0;">this</span>.adjList = adjList;
+    <span style="color: #E06C75;">this</span>.adjList = adjList;
   }
 
-  <span style="color: #228b22;">void</span> <span style="color: #0000ff;">removeEdge</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">start</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">end</span>) {
-    <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">newStartList</span> = adjList.get(start);
-    newStartList.remove(<span style="color: #a020f0;">new</span> <span style="color: #228b22;">Integer</span>(end));
+  <span style="color: #61AFEF;">void</span> <span style="color: #61AFEF;">removeEdge</span>(<span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">start</span>, <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">end</span>) {
+    <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #E5C07B;">newStartList</span> = adjList.get(start);
+    newStartList.remove(<span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">Integer</span>(end));
     adjList.put(start, newStartList);
-    <span style="color: #a020f0;">if</span> (start != end) {
-      <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">newEndList</span> = adjList.get(end);
-      newEndList.remove(<span style="color: #a020f0;">new</span> <span style="color: #228b22;">Integer</span>(start));
+    <span style="color: #E06C75;">if</span> (start != end) {
+      <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #E5C07B;">newEndList</span> = adjList.get(end);
+      newEndList.remove(<span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">Integer</span>(start));
       adjList.put(end, newEndList);
     }
   }
 
-  <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #0000ff;">getCycle</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">start</span>) {
-    <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">cycle</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">LinkedList</span>&lt;<span style="color: #228b22;">Integer</span>&gt;();
+  <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #61AFEF;">getCycle</span>(<span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">start</span>) {
+    <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #E5C07B;">cycle</span> = <span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">LinkedList</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt;();
     cycle.add(start);
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">second</span> = <span style="color: #a020f0;">this</span>.adjList.get(start).get(0);
-    <span style="color: #a020f0;">this</span>.removeEdge(start, second);
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">second</span> = <span style="color: #E06C75;">this</span>.adjList.get(start).get(0);
+    <span style="color: #E06C75;">this</span>.removeEdge(start, second);
     cycle.add(second);
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">current</span> = second;
-    <span style="color: #a020f0;">while</span> (current != start) {
-      <span style="color: #228b22;">int</span> <span style="color: #a0522d;">next</span> = <span style="color: #a020f0;">this</span>.adjList.get(current).get(0);
-      <span style="color: #a020f0;">this</span>.removeEdge(current, next);
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">current</span> = second;
+    <span style="color: #E06C75;">while</span> (current != start) {
+      <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">next</span> = <span style="color: #E06C75;">this</span>.adjList.get(current).get(0);
+      <span style="color: #E06C75;">this</span>.removeEdge(current, next);
       cycle.add(next);
       current = next;
     }
-    <span style="color: #a020f0;">return</span> cycle;
+    <span style="color: #E06C75;">return</span> cycle;
   }
 
-  <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Domino</span>&gt; <span style="color: #0000ff;">cycleToDominoes</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">start</span>, <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">cycle</span>) {
-    <span style="color: #a020f0;">if</span> (cycle.size() == 2) {
-      <span style="color: #a020f0;">return</span> List.of(<span style="color: #a020f0;">new</span> <span style="color: #228b22;">Domino</span>(start, start));
+  <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Domino</span>&gt; <span style="color: #61AFEF;">cycleToDominoes</span>(<span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">start</span>, <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #E5C07B;">cycle</span>) {
+    <span style="color: #E06C75;">if</span> (cycle.size() == 2) {
+      <span style="color: #E06C75;">return</span> List.of(<span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">Domino</span>(start, start));
     }
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">current</span> = start;
-    <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Domino</span>&gt; <span style="color: #a0522d;">dominoes</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">LinkedList</span>&lt;<span style="color: #228b22;">Domino</span>&gt;();
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">current</span> = start;
+    <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Domino</span>&gt; <span style="color: #E5C07B;">dominoes</span> = <span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">LinkedList</span>&lt;<span style="color: #61AFEF;">Domino</span>&gt;();
     cycle.remove(0);
-    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>: cycle) {
-      dominoes.add(<span style="color: #a020f0;">new</span> <span style="color: #228b22;">Domino</span>(current, i));
+    <span style="color: #E06C75;">for</span> (<span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">i</span>: cycle) {
+      dominoes.add(<span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">Domino</span>(current, i));
       current = i;
     }
-    <span style="color: #b22222;">// </span><span style="color: #b22222;">dominoes.add(new Domino(current, start));</span>
-    <span style="color: #a020f0;">return</span> dominoes;
+    <span style="color: #5C6370; font-style: italic;">// </span><span style="color: #5C6370; font-style: italic;">dominoes.add(new Domino(current, start));</span>
+    <span style="color: #E06C75;">return</span> dominoes;
   }
 
-  <span style="color: #228b22;">void</span> <span style="color: #0000ff;">existsEulerCycle</span>() <span style="color: #a020f0;">throws</span> <span style="color: #228b22;">ChainNotFoundException</span> {
-    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #0000ff;">v</span>: <span style="color: #a020f0;">this</span>.adjList.keySet()) {
-      <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">noLoop</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">LinkedList</span>&lt;<span style="color: #228b22;">Integer</span>&gt;(<span style="color: #a020f0;">this</span>.adjList.get(v));
+  <span style="color: #61AFEF;">void</span> <span style="color: #61AFEF;">existsEulerCycle</span>() <span style="color: #E06C75;">throws</span> <span style="color: #61AFEF;">ChainNotFoundException</span> {
+    <span style="color: #E06C75;">for</span> (<span style="color: #61AFEF;">int</span> <span style="color: #61AFEF;">v</span>: <span style="color: #E06C75;">this</span>.adjList.keySet()) {
+      <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #E5C07B;">noLoop</span> = <span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">LinkedList</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt;(<span style="color: #E06C75;">this</span>.adjList.get(v));
       noLoop.removeAll(Collections.singleton(v));
-      <span style="color: #a020f0;">if</span> (noLoop.size() % 2 != 0) {
-        <span style="color: #a020f0;">throw</span> <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ChainNotFoundException</span>(<span style="color: #8b2252;">"No domino chain found."</span>);
+      <span style="color: #E06C75;">if</span> (noLoop.size() % 2 != 0) {
+        <span style="color: #E06C75;">throw</span> <span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">ChainNotFoundException</span>(<span style="color: #98C379;">"No domino chain found."</span>);
       }
     }
   }
 
-  <span style="color: #228b22;">int</span> <span style="color: #0000ff;">findFirstNonZeroValence</span>() {
-    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>: <span style="color: #a020f0;">this</span>.cycle) {
-      <span style="color: #a020f0;">if</span> (<span style="color: #a020f0;">this</span>.adjList.get(i).size() != 0) {
-        <span style="color: #a020f0;">return</span> i;
+  <span style="color: #61AFEF;">int</span> <span style="color: #61AFEF;">findFirstNonZeroValence</span>() {
+    <span style="color: #E06C75;">for</span> (<span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">i</span>: <span style="color: #E06C75;">this</span>.cycle) {
+      <span style="color: #E06C75;">if</span> (<span style="color: #E06C75;">this</span>.adjList.get(i).size() != 0) {
+        <span style="color: #E06C75;">return</span> i;
       }
     }
-    <span style="color: #a020f0;">return</span> -1;
+    <span style="color: #E06C75;">return</span> -1;
   }
 
-  <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">addCycle</span>() {
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = findFirstNonZeroValence();
-    <span style="color: #a020f0;">if</span> (i &lt; 0) {
-      <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">false</span>;
+  <span style="color: #61AFEF;">boolean</span> <span style="color: #61AFEF;">addCycle</span>() {
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">i</span> = findFirstNonZeroValence();
+    <span style="color: #E06C75;">if</span> (i &lt; 0) {
+      <span style="color: #E06C75;">return</span> <span style="color: #98C379;">false</span>;
     }
-    <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">newCycle</span> = <span style="color: #a020f0;">this</span>.getCycle(i);
+    <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #E5C07B;">newCycle</span> = <span style="color: #E06C75;">this</span>.getCycle(i);
     newCycle.remove(newCycle.size() - 1);
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">j</span> = <span style="color: #a020f0;">this</span>.cycle.indexOf(<span style="color: #a020f0;">new</span> <span style="color: #228b22;">Integer</span>(i));
-    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>: newCycle) {
-      <span style="color: #a020f0;">this</span>.cycle.add(j+1, n);
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">j</span> = <span style="color: #E06C75;">this</span>.cycle.indexOf(<span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">Integer</span>(i));
+    <span style="color: #E06C75;">for</span> (<span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">n</span>: newCycle) {
+      <span style="color: #E06C75;">this</span>.cycle.add(j+1, n);
     }
-    <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">true</span>;
+    <span style="color: #E06C75;">return</span> <span style="color: #98C379;">true</span>;
   }
 
-  <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Domino</span>&gt; <span style="color: #0000ff;">formChain</span>(<span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Domino</span>&gt; <span style="color: #a0522d;">dominoes</span>) <span style="color: #a020f0;">throws</span> <span style="color: #228b22;">ChainNotFoundException</span> {
-    <span style="color: #a020f0;">if</span> (dominoes.size() == 0) {
-      <span style="color: #a020f0;">return</span> List.of();
+  <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Domino</span>&gt; <span style="color: #61AFEF;">formChain</span>(<span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Domino</span>&gt; <span style="color: #E5C07B;">dominoes</span>) <span style="color: #E06C75;">throws</span> <span style="color: #61AFEF;">ChainNotFoundException</span> {
+    <span style="color: #E06C75;">if</span> (dominoes.size() == 0) {
+      <span style="color: #E06C75;">return</span> List.of();
     }
-    <span style="color: #a020f0;">this</span>.getAdjList(dominoes);
-    <span style="color: #a020f0;">this</span>.existsEulerCycle();
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">start</span> = dominoes.get(0).getLeft();
-    <span style="color: #a020f0;">this</span>.cycle = <span style="color: #a020f0;">this</span>.getCycle(start);
-    <span style="color: #a020f0;">while</span> (<span style="color: #a020f0;">this</span>.addCycle()) {}
-    <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Domino</span>&gt; <span style="color: #a0522d;">out</span> = <span style="color: #a020f0;">this</span>.cycleToDominoes(start, <span style="color: #a020f0;">this</span>.cycle);
-    <span style="color: #a020f0;">if</span> (out.size() != dominoes.size()) {
-      <span style="color: #a020f0;">throw</span> <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ChainNotFoundException</span>(<span style="color: #8b2252;">"No domino chain found."</span>);
+    <span style="color: #E06C75;">this</span>.getAdjList(dominoes);
+    <span style="color: #E06C75;">this</span>.existsEulerCycle();
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">start</span> = dominoes.get(0).getLeft();
+    <span style="color: #E06C75;">this</span>.cycle = <span style="color: #E06C75;">this</span>.getCycle(start);
+    <span style="color: #E06C75;">while</span> (<span style="color: #E06C75;">this</span>.addCycle()) {}
+    <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Domino</span>&gt; <span style="color: #E5C07B;">out</span> = <span style="color: #E06C75;">this</span>.cycleToDominoes(start, <span style="color: #E06C75;">this</span>.cycle);
+    <span style="color: #E06C75;">if</span> (out.size() != dominoes.size()) {
+      <span style="color: #E06C75;">throw</span> <span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">ChainNotFoundException</span>(<span style="color: #98C379;">"No domino chain found."</span>);
     }
-    <span style="color: #a020f0;">return</span> out;
+    <span style="color: #E06C75;">return</span> out;
   }
 }
 </pre>

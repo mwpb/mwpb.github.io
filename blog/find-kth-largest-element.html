@@ -243,15 +243,15 @@ We can use the following modification of heap sort.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">import</span> heapq
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">kth_largest</span>(l, k): <span style="color: #b22222;"># </span><span style="color: #b22222;">O(n log(k))</span>
-    <span style="color: #a0522d;">min_heap</span> = []
-    <span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> l:
-        <span style="color: #a020f0;">if</span> <span style="color: #483d8b;">len</span>(min_heap) &lt; k:
+<pre class="src src-python"><span style="color: #E06C75;">import</span> heapq
+<span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">kth_largest</span>(l, k): <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">O(n log(k))</span>
+    <span style="color: #E5C07B;">min_heap</span> = []
+    <span style="color: #E06C75;">for</span> i <span style="color: #E06C75;">in</span> l:
+        <span style="color: #E06C75;">if</span> <span style="color: #828997;">len</span>(min_heap) &lt; k:
             heapq.heappush(min_heap, i)
-        <span style="color: #a020f0;">elif</span> min_heap[0] &lt; i:
+        <span style="color: #E06C75;">elif</span> min_heap[0] &lt; i:
             heapq.heappushpop(min_heap, i)
-    <span style="color: #a020f0;">return</span> min_heap[0]
+    <span style="color: #E06C75;">return</span> min_heap[0]
 </pre>
 </div>
 
@@ -265,30 +265,30 @@ The idea is that by partitioning the array around a pivot element we can elimina
 An extremely rough implementation might be as follows:
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">from</span> random <span style="color: #a020f0;">import</span> randrange
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">qs_imitation</span>(l, k): <span style="color: #b22222;"># </span><span style="color: #b22222;">worst case O(N^2) average case O(N)</span>
-    <span style="color: #a020f0;">print</span>(f<span style="color: #8b2252;">'qs_imitation({l}, {k})'</span>)
-    <span style="color: #a0522d;">m</span> = randrange(<span style="color: #483d8b;">len</span>(l))
-    <span style="color: #a0522d;">pivot</span> = l[m]
-    <span style="color: #a0522d;">above</span> = []
-    <span style="color: #a0522d;">below</span> = []
-    <span style="color: #a0522d;">same</span> = []
-    <span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> l:
-        <span style="color: #a020f0;">if</span> i &gt; pivot:
+<pre class="src src-python"><span style="color: #E06C75;">from</span> random <span style="color: #E06C75;">import</span> randrange
+<span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">qs_imitation</span>(l, k): <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">worst case O(N^2) average case O(N)</span>
+    <span style="color: #E06C75;">print</span>(f<span style="color: #98C379;">'qs_imitation({l}, {k})'</span>)
+    <span style="color: #E5C07B;">m</span> = randrange(<span style="color: #828997;">len</span>(l))
+    <span style="color: #E5C07B;">pivot</span> = l[m]
+    <span style="color: #E5C07B;">above</span> = []
+    <span style="color: #E5C07B;">below</span> = []
+    <span style="color: #E5C07B;">same</span> = []
+    <span style="color: #E06C75;">for</span> i <span style="color: #E06C75;">in</span> l:
+        <span style="color: #E06C75;">if</span> i &gt; pivot:
             above.append(i)
-        <span style="color: #a020f0;">elif</span> i &lt; pivot:
+        <span style="color: #E06C75;">elif</span> i &lt; pivot:
             below.append(i)
-        <span style="color: #a020f0;">else</span>:
+        <span style="color: #E06C75;">else</span>:
             same.append(i)
-    <span style="color: #a020f0;">print</span>(m, below, same, above)
-    <span style="color: #a020f0;">if</span> <span style="color: #483d8b;">len</span>(above) == k-1:
-        <span style="color: #a020f0;">return</span> pivot
-    <span style="color: #a020f0;">elif</span> <span style="color: #483d8b;">len</span>(above) &gt;= k:
-        <span style="color: #a020f0;">return</span> qs_imitation(above, k)
-    <span style="color: #a020f0;">elif</span> <span style="color: #483d8b;">len</span>(above) + <span style="color: #483d8b;">len</span>(same) &gt; k:
-        <span style="color: #a020f0;">return</span> pivot
-    <span style="color: #a020f0;">else</span>:
-        <span style="color: #a020f0;">return</span> qs_imitation(below, k-<span style="color: #483d8b;">len</span>(above)-<span style="color: #483d8b;">len</span>(same))
+    <span style="color: #E06C75;">print</span>(m, below, same, above)
+    <span style="color: #E06C75;">if</span> <span style="color: #828997;">len</span>(above) == k-1:
+        <span style="color: #E06C75;">return</span> pivot
+    <span style="color: #E06C75;">elif</span> <span style="color: #828997;">len</span>(above) &gt;= k:
+        <span style="color: #E06C75;">return</span> qs_imitation(above, k)
+    <span style="color: #E06C75;">elif</span> <span style="color: #828997;">len</span>(above) + <span style="color: #828997;">len</span>(same) &gt; k:
+        <span style="color: #E06C75;">return</span> pivot
+    <span style="color: #E06C75;">else</span>:
+        <span style="color: #E06C75;">return</span> qs_imitation(below, k-<span style="color: #828997;">len</span>(above)-<span style="color: #828997;">len</span>(same))
 </pre>
 </div>
 <p>

@@ -253,20 +253,20 @@ One is the head of the list (which is changing!) and one is the next node to tra
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Solution</span> {
-  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">ListNode</span> <span style="color: #0000ff;">reverseList</span>(<span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">head</span>) {
-    <span style="color: #a020f0;">if</span> (head == <span style="color: #008b8b;">null</span> || head.next == <span style="color: #008b8b;">null</span>) {
-      <span style="color: #a020f0;">return</span> head;
+<pre class="src src-java"><span style="color: #E06C75;">class</span> <span style="color: #61AFEF;">Solution</span> {
+  <span style="color: #E06C75;">public</span> <span style="color: #61AFEF;">ListNode</span> <span style="color: #61AFEF;">reverseList</span>(<span style="color: #61AFEF;">ListNode</span> <span style="color: #E5C07B;">head</span>) {
+    <span style="color: #E06C75;">if</span> (head == <span style="color: #98C379;">null</span> || head.next == <span style="color: #98C379;">null</span>) {
+      <span style="color: #E06C75;">return</span> head;
     }
-    <span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">current</span> = head.next;
-    head.next = <span style="color: #008b8b;">null</span>;
-    <span style="color: #a020f0;">while</span> (current != <span style="color: #008b8b;">null</span>) {
-      <span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">tmp</span> = current.next;
+    <span style="color: #61AFEF;">ListNode</span> <span style="color: #E5C07B;">current</span> = head.next;
+    head.next = <span style="color: #98C379;">null</span>;
+    <span style="color: #E06C75;">while</span> (current != <span style="color: #98C379;">null</span>) {
+      <span style="color: #61AFEF;">ListNode</span> <span style="color: #E5C07B;">tmp</span> = current.next;
       current.next = head;
       head = current;
       current = tmp;
     }
-    <span style="color: #a020f0;">return</span> head;
+    <span style="color: #E06C75;">return</span> head;
   }
 }
 </pre>

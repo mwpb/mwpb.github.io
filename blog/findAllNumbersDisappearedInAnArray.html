@@ -276,40 +276,40 @@ Therefore we have to keep track of our starting point and start another chain if
 A full solution could be as follows:
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Solution</span> {
-  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #0000ff;">findDisappearedNumbers</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">nums</span>) {
+<pre class="src src-java"><span style="color: #E06C75;">class</span> <span style="color: #61AFEF;">Solution</span> {
+  <span style="color: #E06C75;">public</span> <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #61AFEF;">findDisappearedNumbers</span>(<span style="color: #61AFEF;">int</span>[] <span style="color: #E5C07B;">nums</span>) {
     moveValuesToTheirKey(nums);
 
-    <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">Integer</span>&gt; <span style="color: #a0522d;">missing</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">LinkedList</span>&lt;<span style="color: #228b22;">Integer</span>&gt;();
-    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">j</span> = 0; j &lt; nums.<span style="color: #228b22;">length</span>; j++) {
-      <span style="color: #a020f0;">if</span> (nums[j] == 0) missing.add(j + 1);
+    <span style="color: #61AFEF;">List</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt; <span style="color: #E5C07B;">missing</span> = <span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">LinkedList</span>&lt;<span style="color: #61AFEF;">Integer</span>&gt;();
+    <span style="color: #E06C75;">for</span> (<span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">j</span> = 0; j &lt; nums.<span style="color: #61AFEF;">length</span>; j++) {
+      <span style="color: #E06C75;">if</span> (nums[j] == 0) missing.add(j + 1);
     }    
 
-    <span style="color: #a020f0;">return</span> missing;
+    <span style="color: #E06C75;">return</span> missing;
   }
 
-  <span style="color: #228b22;">void</span> <span style="color: #0000ff;">moveValuesToTheirKey</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">nums</span>) {
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0;
-    <span style="color: #a020f0;">while</span> (i &lt; nums.<span style="color: #228b22;">length</span>) {
-      <span style="color: #228b22;">int</span> <span style="color: #a0522d;">value</span> = nums[i];
-      <span style="color: #a020f0;">if</span> (value - 1 == i) {
+  <span style="color: #61AFEF;">void</span> <span style="color: #61AFEF;">moveValuesToTheirKey</span>(<span style="color: #61AFEF;">int</span>[] <span style="color: #E5C07B;">nums</span>) {
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">i</span> = 0;
+    <span style="color: #E06C75;">while</span> (i &lt; nums.<span style="color: #61AFEF;">length</span>) {
+      <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">value</span> = nums[i];
+      <span style="color: #E06C75;">if</span> (value - 1 == i) {
         i++;
-        <span style="color: #a020f0;">continue</span>;
+        <span style="color: #E06C75;">continue</span>;
       }
 
       nums[i] = 0;
-      <span style="color: #a020f0;">while</span> (0 &lt; value &amp;&amp; value &lt;= nums.length) {
+      <span style="color: #E06C75;">while</span> (0 &lt; value &amp;&amp; value &lt;= nums.length) {
         value = swapIn(value, nums);
       }
       i++;
     }
   }
 
-  <span style="color: #228b22;">int</span> <span style="color: #0000ff;">swapIn</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">value</span>, <span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">nums</span>) {
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">target</span> = nums[value - 1];
-    <span style="color: #a020f0;">if</span> (value == target) <span style="color: #a020f0;">return</span> -1;
+  <span style="color: #61AFEF;">int</span> <span style="color: #61AFEF;">swapIn</span>(<span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">value</span>, <span style="color: #61AFEF;">int</span>[] <span style="color: #E5C07B;">nums</span>) {
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">target</span> = nums[value - 1];
+    <span style="color: #E06C75;">if</span> (value == target) <span style="color: #E06C75;">return</span> -1;
     nums[value - 1] = value;
-    <span style="color: #a020f0;">return</span> target;
+    <span style="color: #E06C75;">return</span> target;
   }
 }
 </pre>

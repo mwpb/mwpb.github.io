@@ -245,12 +245,12 @@ The key tactic to implement this idea is that reversing a stack amounts to poppi
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">rev_stack</span>(stk):
-    <span style="color: #a0522d;">out_stk</span> = []
-    <span style="color: #a020f0;">while</span> stk:
-        <span style="color: #a0522d;">ele</span> = stk.pop()
+<pre class="src src-python"><span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">rev_stack</span>(stk):
+    <span style="color: #E5C07B;">out_stk</span> = []
+    <span style="color: #E06C75;">while</span> stk:
+        <span style="color: #E5C07B;">ele</span> = stk.pop()
         out_stk.append(ele)
-    <span style="color: #a020f0;">return</span> out_stk
+    <span style="color: #E06C75;">return</span> out_stk
 </pre>
 </div>
 
@@ -270,28 +270,28 @@ In total we have:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">MyQueue</span>(<span style="color: #483d8b;">object</span>):
-   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">__init__</span>(<span style="color: #a020f0;">self</span>):
-       <span style="color: #a020f0;">self</span>.instack = []
-       <span style="color: #a020f0;">self</span>.outstack = []
+<pre class="src src-python"><span style="color: #E06C75;">class</span> <span style="color: #61AFEF;">MyQueue</span>(<span style="color: #828997;">object</span>):
+   <span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">__init__</span>(<span style="color: #E06C75;">self</span>):
+       <span style="color: #E06C75;">self</span>.instack = []
+       <span style="color: #E06C75;">self</span>.outstack = []
 
-   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">peek</span>(<span style="color: #a020f0;">self</span>):
-       <span style="color: #a0522d;">out</span> = <span style="color: #a020f0;">self</span>.outstack[-1]
-       <span style="color: #a020f0;">return</span> out
+   <span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">peek</span>(<span style="color: #E06C75;">self</span>):
+       <span style="color: #E5C07B;">out</span> = <span style="color: #E06C75;">self</span>.outstack[-1]
+       <span style="color: #E06C75;">return</span> out
 
-   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">shuffle</span>(<span style="color: #a020f0;">self</span>):
-       <span style="color: #a020f0;">if</span> <span style="color: #a020f0;">not</span> <span style="color: #a020f0;">self</span>.outstack:
-           <span style="color: #a020f0;">while</span> <span style="color: #a020f0;">self</span>.instack:
-               <span style="color: #a0522d;">ele</span> = <span style="color: #a020f0;">self</span>.instack.pop()
-               <span style="color: #a020f0;">self</span>.outstack.append(ele)
+   <span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">shuffle</span>(<span style="color: #E06C75;">self</span>):
+       <span style="color: #E06C75;">if</span> <span style="color: #E06C75;">not</span> <span style="color: #E06C75;">self</span>.outstack:
+           <span style="color: #E06C75;">while</span> <span style="color: #E06C75;">self</span>.instack:
+               <span style="color: #E5C07B;">ele</span> = <span style="color: #E06C75;">self</span>.instack.pop()
+               <span style="color: #E06C75;">self</span>.outstack.append(ele)
 
-   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">pop</span>(<span style="color: #a020f0;">self</span>):
-       <span style="color: #a0522d;">out</span> = <span style="color: #a020f0;">self</span>.outstack.pop()
-       <span style="color: #a020f0;">self</span>.shuffle()
-       <span style="color: #a020f0;">return</span> out
+   <span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">pop</span>(<span style="color: #E06C75;">self</span>):
+       <span style="color: #E5C07B;">out</span> = <span style="color: #E06C75;">self</span>.outstack.pop()
+       <span style="color: #E06C75;">self</span>.shuffle()
+       <span style="color: #E06C75;">return</span> out
 
-   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">put</span>(<span style="color: #a020f0;">self</span>, value):
-       <span style="color: #a020f0;">self</span>.instack.append(value)
+   <span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">put</span>(<span style="color: #E06C75;">self</span>, value):
+       <span style="color: #E06C75;">self</span>.instack.append(value)
 </pre>
 </div>
 <p>

@@ -265,37 +265,37 @@ Note that if this problem had not been specifically about arrays I would have us
 
 
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Solution</span> {
-  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">int</span>[] <span style="color: #0000ff;">sortedSquares</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">nums</span>) {
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">nNegative</span> = 0;
-    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; nums.<span style="color: #228b22;">length</span>; i++) {
-      <span style="color: #a020f0;">if</span> (nums[i] &lt; 0) nNegative++;
+<pre class="src src-java"><span style="color: #E06C75;">class</span> <span style="color: #61AFEF;">Solution</span> {
+  <span style="color: #E06C75;">public</span> <span style="color: #61AFEF;">int</span>[] <span style="color: #61AFEF;">sortedSquares</span>(<span style="color: #61AFEF;">int</span>[] <span style="color: #E5C07B;">nums</span>) {
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">nNegative</span> = 0;
+    <span style="color: #E06C75;">for</span> (<span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">i</span> = 0; i &lt; nums.<span style="color: #61AFEF;">length</span>; i++) {
+      <span style="color: #E06C75;">if</span> (nums[i] &lt; 0) nNegative++;
       nums[i] = nums[i] * nums[i];
     }
-    <span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">sortedSquares</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">int</span>[nums.length];
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0;
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">leastNegative</span> = nNegative - 1;
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">leastPositive</span> = nNegative;
-    <span style="color: #a020f0;">while</span> (i &lt; nums.<span style="color: #228b22;">length</span>) {
-      <span style="color: #a020f0;">if</span> (leastPositive == nums.length) {
+    <span style="color: #61AFEF;">int</span>[] <span style="color: #E5C07B;">sortedSquares</span> = <span style="color: #E06C75;">new</span> <span style="color: #61AFEF;">int</span>[nums.length];
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">i</span> = 0;
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">leastNegative</span> = nNegative - 1;
+    <span style="color: #61AFEF;">int</span> <span style="color: #E5C07B;">leastPositive</span> = nNegative;
+    <span style="color: #E06C75;">while</span> (i &lt; nums.<span style="color: #61AFEF;">length</span>) {
+      <span style="color: #E06C75;">if</span> (leastPositive == nums.length) {
         sortedSquares[i] = nums[leastNegative];
         i++;
         leastNegative--;
-      } <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> (leastNegative == -1) {
+      } <span style="color: #E06C75;">else</span> <span style="color: #E06C75;">if</span> (leastNegative == -1) {
         sortedSquares[i] = nums[leastPositive];
         i++;
         leastPositive++;
-      } <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> (nums[leastNegative] &lt;= nums[leastPositive]) {
+      } <span style="color: #E06C75;">else</span> <span style="color: #E06C75;">if</span> (nums[leastNegative] &lt;= nums[leastPositive]) {
         sortedSquares[i] = nums[leastNegative];
         i++;
         leastNegative--;
-      } <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> (nums[leastNegative] &gt; nums[leastPositive]) {
+      } <span style="color: #E06C75;">else</span> <span style="color: #E06C75;">if</span> (nums[leastNegative] &gt; nums[leastPositive]) {
         sortedSquares[i] = nums[leastPositive];
         i++;
         leastPositive++;
       }
     }
-    <span style="color: #a020f0;">return</span> sortedSquares;
+    <span style="color: #E06C75;">return</span> sortedSquares;
   }
 }
 </pre>

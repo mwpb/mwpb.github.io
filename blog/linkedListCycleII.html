@@ -276,28 +276,28 @@ So the code to complete the question is quite straightforward:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">Solution</span> {
-  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">ListNode</span> <span style="color: #0000ff;">detectCycle</span>(<span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">head</span>) {
-    <span style="color: #a020f0;">if</span> (head == <span style="color: #008b8b;">null</span> || head.next == <span style="color: #008b8b;">null</span> || head.next.next == <span style="color: #008b8b;">null</span>) {
-      <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">null</span>;
+<pre class="src src-java"><span style="color: #E06C75;">public</span> <span style="color: #E06C75;">class</span> <span style="color: #61AFEF;">Solution</span> {
+  <span style="color: #E06C75;">public</span> <span style="color: #61AFEF;">ListNode</span> <span style="color: #61AFEF;">detectCycle</span>(<span style="color: #61AFEF;">ListNode</span> <span style="color: #E5C07B;">head</span>) {
+    <span style="color: #E06C75;">if</span> (head == <span style="color: #98C379;">null</span> || head.next == <span style="color: #98C379;">null</span> || head.next.next == <span style="color: #98C379;">null</span>) {
+      <span style="color: #E06C75;">return</span> <span style="color: #98C379;">null</span>;
     }
-    <span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">slow</span> = head.next;
-    <span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">fast</span> = head.next.next;
+    <span style="color: #61AFEF;">ListNode</span> <span style="color: #E5C07B;">slow</span> = head.next;
+    <span style="color: #61AFEF;">ListNode</span> <span style="color: #E5C07B;">fast</span> = head.next.next;
 
-    <span style="color: #a020f0;">while</span> (!slow.equals(fast)) {
-      <span style="color: #a020f0;">if</span> (fast.next == <span style="color: #008b8b;">null</span> || fast.next.next == <span style="color: #008b8b;">null</span>) {
-        <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">null</span>;
+    <span style="color: #E06C75;">while</span> (<span style="color: #61AFEF;">!</span>slow.equals(fast)) {
+      <span style="color: #E06C75;">if</span> (fast.next == <span style="color: #98C379;">null</span> || fast.next.next == <span style="color: #98C379;">null</span>) {
+        <span style="color: #E06C75;">return</span> <span style="color: #98C379;">null</span>;
       }
       fast = fast.next.next;
       slow = slow.next;
     }
 
     slow = head;
-    <span style="color: #a020f0;">while</span> (!slow.equals(fast)) {
+    <span style="color: #E06C75;">while</span> (<span style="color: #61AFEF;">!</span>slow.equals(fast)) {
       fast = fast.next;
       slow = slow.next;
     }
-    <span style="color: #a020f0;">return</span> slow;
+    <span style="color: #E06C75;">return</span> slow;
   }
 }
 </pre>

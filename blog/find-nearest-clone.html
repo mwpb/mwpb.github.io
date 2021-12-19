@@ -243,18 +243,18 @@ One way of doing this (at the cost of a little extra space) is to use a queue wh
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">bfs</span>(start, adj_dict, is_end_node):
-    <span style="color: #a0522d;">visited</span> = <span style="color: #483d8b;">set</span>([])
-    <span style="color: #a0522d;">q</span> = deque([(start, 0)])
-    <span style="color: #a020f0;">while</span> <span style="color: #483d8b;">len</span>(q):
-        <span style="color: #a0522d;">node</span>, <span style="color: #a0522d;">distance</span> = q.pop()
-        <span style="color: #a020f0;">for</span> next_node <span style="color: #a020f0;">in</span> adj_dict[node]:
-            <span style="color: #a020f0;">if</span> next_node <span style="color: #a020f0;">not</span> <span style="color: #a020f0;">in</span> visited:
-                <span style="color: #a020f0;">if</span> is_end_node(next_node):
-                    <span style="color: #a020f0;">return</span> distance+1, next_node
+<pre class="src src-python"><span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">bfs</span>(start, adj_dict, is_end_node):
+    <span style="color: #E5C07B;">visited</span> = <span style="color: #828997;">set</span>([])
+    <span style="color: #E5C07B;">q</span> = deque([(start, 0)])
+    <span style="color: #E06C75;">while</span> <span style="color: #828997;">len</span>(q):
+        <span style="color: #E5C07B;">node</span>, <span style="color: #E5C07B;">distance</span> = q.pop()
+        <span style="color: #E06C75;">for</span> next_node <span style="color: #E06C75;">in</span> adj_dict[node]:
+            <span style="color: #E06C75;">if</span> next_node <span style="color: #E06C75;">not</span> <span style="color: #E06C75;">in</span> visited:
+                <span style="color: #E06C75;">if</span> is_end_node(next_node):
+                    <span style="color: #E06C75;">return</span> distance+1, next_node
                 visited.add(next_node)
                 q.appendleft((next_node, distance+1))
-    <span style="color: #a020f0;">return</span> -1, <span style="color: #008b8b;">None</span>
+    <span style="color: #E06C75;">return</span> -1, <span style="color: #98C379;">None</span>
 </pre>
 </div>
 
@@ -278,47 +278,47 @@ The full solution might look like:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">get_adj_dict</span>(graph_nodes, graph_from, graph_to):
-    <span style="color: #a0522d;">adj_dict</span> = defaultdict(<span style="color: #483d8b;">list</span>)
-    <span style="color: #a020f0;">for</span> i, start <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">enumerate</span>(graph_from):
+<pre class="src src-python"><span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">get_adj_dict</span>(graph_nodes, graph_from, graph_to):
+    <span style="color: #E5C07B;">adj_dict</span> = defaultdict(<span style="color: #828997;">list</span>)
+    <span style="color: #E06C75;">for</span> i, start <span style="color: #E06C75;">in</span> <span style="color: #828997;">enumerate</span>(graph_from):
         adj_dict[start].append(graph_to[i])
         adj_dict[graph_to[i]].append(start)
-    <span style="color: #a020f0;">return</span> adj_dict
+    <span style="color: #E06C75;">return</span> adj_dict
 
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">bfs</span>(start, adj_dict, color, visited, color_lookup):
-    <span style="color: #a0522d;">q</span> = deque([(start, 0)])
-    <span style="color: #a020f0;">while</span> <span style="color: #483d8b;">len</span>(q):
-        <span style="color: #a0522d;">node</span>, <span style="color: #a0522d;">distance</span> = q.pop()
-        <span style="color: #a020f0;">for</span> next_node <span style="color: #a020f0;">in</span> adj_dict[node]:
-            <span style="color: #a020f0;">if</span> next_node <span style="color: #a020f0;">not</span> <span style="color: #a020f0;">in</span> visited:
+<span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">bfs</span>(start, adj_dict, color, visited, color_lookup):
+    <span style="color: #E5C07B;">q</span> = deque([(start, 0)])
+    <span style="color: #E06C75;">while</span> <span style="color: #828997;">len</span>(q):
+        <span style="color: #E5C07B;">node</span>, <span style="color: #E5C07B;">distance</span> = q.pop()
+        <span style="color: #E06C75;">for</span> next_node <span style="color: #E06C75;">in</span> adj_dict[node]:
+            <span style="color: #E06C75;">if</span> next_node <span style="color: #E06C75;">not</span> <span style="color: #E06C75;">in</span> visited:
                 visited.add(next_node)
-                <span style="color: #a020f0;">if</span> color_lookup[next_node] == color:
-                    <span style="color: #a020f0;">return</span> distance+1, next_node
+                <span style="color: #E06C75;">if</span> color_lookup[next_node] == color:
+                    <span style="color: #E06C75;">return</span> distance+1, next_node
                 q.appendleft((next_node, distance+1))
-    <span style="color: #a020f0;">return</span> -1, <span style="color: #008b8b;">None</span>
+    <span style="color: #E06C75;">return</span> -1, <span style="color: #98C379;">None</span>
 
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">get_color_lookup</span>(ids):
-    <span style="color: #a0522d;">color_lookup</span> = {}
-    <span style="color: #a020f0;">for</span> i, color <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">enumerate</span>(ids):
-        <span style="color: #a0522d;">color_lookup</span>[i+1] = color
-    <span style="color: #a020f0;">return</span> color_lookup
+<span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">get_color_lookup</span>(ids):
+    <span style="color: #E5C07B;">color_lookup</span> = {}
+    <span style="color: #E06C75;">for</span> i, color <span style="color: #E06C75;">in</span> <span style="color: #828997;">enumerate</span>(ids):
+        <span style="color: #E5C07B;">color_lookup</span>[i+1] = color
+    <span style="color: #E06C75;">return</span> color_lookup
 
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">findShortest</span>(graph_nodes, graph_from, graph_to, ids, val):
-    <span style="color: #a0522d;">adj_dict</span> = get_adj_dict(graph_nodes, graph_from, graph_to)
-    <span style="color: #a0522d;">color_lookup</span> = get_color_lookup(ids)
-    <span style="color: #a020f0;">try</span>:
-        <span style="color: #a0522d;">node</span> = ids.index(val) + 1
-    <span style="color: #a020f0;">except</span>:
-        <span style="color: #a020f0;">return</span> -1
-    <span style="color: #a0522d;">visited</span> = <span style="color: #483d8b;">set</span>([node])
-    <span style="color: #a0522d;">out</span> = <span style="color: #483d8b;">float</span>(<span style="color: #8b2252;">'inf'</span>)
-    <span style="color: #a020f0;">while</span> <span style="color: #483d8b;">len</span>(visited) &lt; graph_nodes:
-        <span style="color: #a0522d;">x</span>, <span style="color: #a0522d;">node</span> = bfs(node, adj_dict, val, visited, color_lookup)
-        <span style="color: #a020f0;">if</span> x == -1:
-            <span style="color: #a020f0;">break</span>
-        <span style="color: #a020f0;">elif</span> x &lt; out:
-            <span style="color: #a0522d;">out</span> = x
-    <span style="color: #a020f0;">return</span> -1 <span style="color: #a020f0;">if</span> out == <span style="color: #483d8b;">float</span>(<span style="color: #8b2252;">'inf'</span>) <span style="color: #a020f0;">else</span> out
+<span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">findShortest</span>(graph_nodes, graph_from, graph_to, ids, val):
+    <span style="color: #E5C07B;">adj_dict</span> = get_adj_dict(graph_nodes, graph_from, graph_to)
+    <span style="color: #E5C07B;">color_lookup</span> = get_color_lookup(ids)
+    <span style="color: #E06C75;">try</span>:
+        <span style="color: #E5C07B;">node</span> = ids.index(val) + 1
+    <span style="color: #E06C75;">except</span>:
+        <span style="color: #E06C75;">return</span> -1
+    <span style="color: #E5C07B;">visited</span> = <span style="color: #828997;">set</span>([node])
+    <span style="color: #E5C07B;">out</span> = <span style="color: #828997;">float</span>(<span style="color: #98C379;">'inf'</span>)
+    <span style="color: #E06C75;">while</span> <span style="color: #828997;">len</span>(visited) &lt; graph_nodes:
+        <span style="color: #E5C07B;">x</span>, <span style="color: #E5C07B;">node</span> = bfs(node, adj_dict, val, visited, color_lookup)
+        <span style="color: #E06C75;">if</span> x == -1:
+            <span style="color: #E06C75;">break</span>
+        <span style="color: #E06C75;">elif</span> x &lt; out:
+            <span style="color: #E5C07B;">out</span> = x
+    <span style="color: #E06C75;">return</span> -1 <span style="color: #E06C75;">if</span> out == <span style="color: #828997;">float</span>(<span style="color: #98C379;">'inf'</span>) <span style="color: #E06C75;">else</span> out
 </pre>
 </div>
 </div>

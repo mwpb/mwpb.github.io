@@ -256,13 +256,13 @@ Consider the following example from the Hackerrank problem 'Minimum Absolute Dif
 The brute-force algorithm that comes immediately to mind is to iterate twice through the array thereby comparing each pair of numbers:
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">nearest_dist</span>(arr): <span style="color: #b22222;"># </span><span style="color: #b22222;">O(n^2)</span>
-    <span style="color: #a0522d;">minimum</span> = <span style="color: #483d8b;">float</span>(<span style="color: #8b2252;">'inf'</span>)
-    <span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(<span style="color: #483d8b;">len</span>(arr)):
-        <span style="color: #a020f0;">for</span> j <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(i+1, <span style="color: #483d8b;">len</span>(arr)):
-            <span style="color: #a020f0;">if</span> <span style="color: #483d8b;">abs</span>(arr[i] - arr[j]) &lt; minimum:
-                <span style="color: #a0522d;">minimum</span> = <span style="color: #483d8b;">abs</span>(arr[i] - arr[j])
-    <span style="color: #a020f0;">return</span> minimum
+<pre class="src src-python"><span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">nearest_dist</span>(arr): <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">O(n^2)</span>
+    <span style="color: #E5C07B;">minimum</span> = <span style="color: #828997;">float</span>(<span style="color: #98C379;">'inf'</span>)
+    <span style="color: #E06C75;">for</span> i <span style="color: #E06C75;">in</span> <span style="color: #828997;">range</span>(<span style="color: #828997;">len</span>(arr)):
+        <span style="color: #E06C75;">for</span> j <span style="color: #E06C75;">in</span> <span style="color: #828997;">range</span>(i+1, <span style="color: #828997;">len</span>(arr)):
+            <span style="color: #E06C75;">if</span> <span style="color: #828997;">abs</span>(arr[i] - arr[j]) &lt; minimum:
+                <span style="color: #E5C07B;">minimum</span> = <span style="color: #828997;">abs</span>(arr[i] - arr[j])
+    <span style="color: #E06C75;">return</span> minimum
 </pre>
 </div>
 <p>
@@ -275,13 +275,13 @@ Reasoning as above: we see that `O(n^2)` is worse than `O(n log(n))` and further
 So we can try:
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">nearest_dist</span>(arr): <span style="color: #b22222;"># </span><span style="color: #b22222;">O(n log(n))</span>
-    <span style="color: #a0522d;">minimum</span> = <span style="color: #483d8b;">float</span>(<span style="color: #8b2252;">'inf'</span>)
-    <span style="color: #a0522d;">a</span> = <span style="color: #483d8b;">sorted</span>(arr)
-    <span style="color: #a020f0;">for</span> i, _ <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">enumerate</span>(a):
-        <span style="color: #a020f0;">if</span> <span style="color: #483d8b;">abs</span>(a[i] - a[i+1]) &lt; minimum:
-            <span style="color: #a0522d;">minimum</span> = <span style="color: #483d8b;">abs</span>(a[i] - a[i+1])
-    <span style="color: #a020f0;">return</span> minimum
+<pre class="src src-python"><span style="color: #E06C75;">def</span> <span style="color: #61AFEF;">nearest_dist</span>(arr): <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">O(n log(n))</span>
+    <span style="color: #E5C07B;">minimum</span> = <span style="color: #828997;">float</span>(<span style="color: #98C379;">'inf'</span>)
+    <span style="color: #E5C07B;">a</span> = <span style="color: #828997;">sorted</span>(arr)
+    <span style="color: #E06C75;">for</span> i, _ <span style="color: #E06C75;">in</span> <span style="color: #828997;">enumerate</span>(a):
+        <span style="color: #E06C75;">if</span> <span style="color: #828997;">abs</span>(a[i] - a[i+1]) &lt; minimum:
+            <span style="color: #E5C07B;">minimum</span> = <span style="color: #828997;">abs</span>(a[i] - a[i+1])
+    <span style="color: #E06C75;">return</span> minimum
 </pre>
 </div>
 <p>
